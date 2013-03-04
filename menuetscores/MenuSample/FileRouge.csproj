@@ -66,6 +66,10 @@
     <XnaCompressContent>true</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Armement\Arme.cs" />
+    <Compile Include="Armement\Arme1.cs" />
+    <Compile Include="Armement\Missile.cs" />
+    <Compile Include="Armement\Missile1.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameElements\Bonu\Bonus.cs" />
     <Compile Include="GameElements\Bonu\Heal.cs" />
