@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using FileRouge.GameElements;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FileRouge.GameElements.Core;
 
 namespace FileRouge.Scenes
 {
@@ -63,6 +64,10 @@ namespace FileRouge.Scenes
 
             _gameFont = _content.Load<SpriteFont>("gamefont");
 
+            r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
+            r.mp.Initialize();
+            r.mp.LoadContent(_content);
+
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
             // puissiez admirer la magnifique scène de chargement. :p
@@ -87,6 +92,8 @@ namespace FileRouge.Scenes
         public override void Update(GameTime gameTime, bool othersceneHasFocus, bool coveredByOtherscene)
         {
             base.Update(gameTime, othersceneHasFocus, false);
+            r.mp.HandleInput();
+            r.mp.Update(gameTime);
 
             _pauseAlpha = coveredByOtherscene 
                 ? Math.Min(_pauseAlpha + 1f / 32, 1) 
@@ -107,7 +114,14 @@ namespace FileRouge.Scenes
                 Parallel.ForEach(r.ennemies, ennemie =>
                     {
                         ennemie.Update(gameTime, displacementX);
-
+                        if (r.mp.nb_frame_invulnerability == 0)
+                        {
+                            if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.color, ennemie.getRectangle(), ennemie.color))
+                            {
+                                destroy_ennemies.Add(ennemie);
+                                r.mp.touched();
+                            }
+                        }
                         if (ennemie.position.X < 0 - ennemie.texture.Width)
                         {
                             destroy_ennemies.Add(ennemie);
@@ -118,9 +132,15 @@ namespace FileRouge.Scenes
                 Parallel.ForEach(r.bonus, bonu =>
                 {
                     bonu.Update(gameTime, displacementX);
+                    if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.color, bonu.getRectangle(), bonu.color))
+                    {
+                        bonu.applyBonus();
+                        destroy_bonus.Add(bonu);
+                    }
 
                     if (bonu.position.X < 0 - bonu.texture.Width)
                     {
+                        
                         destroy_bonus.Add(bonu);
                     }
                 });
@@ -154,7 +174,8 @@ namespace FileRouge.Scenes
                 new PauseMenuScene(SceneManager, this).Add();
             else
             {
-                Vector2 movement = Vector2.Zero;
+                
+                /*Vector2 movement = Vector2.Zero;
 
                 if (keyboardState.IsKeyDown(Keys.Left))
                     movement.X--;
@@ -177,16 +198,17 @@ namespace FileRouge.Scenes
                     movement.Normalize();
 
                 Vector2 _playerPosition = r.player_position + movement * 4;
-                r.player_position = _playerPosition;
+                r.player_position = _playerPosition;*/
             }
         }
 
         public override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(ClearOptions.Target, Color.Orange, 0, 0);
-            spriteBatch.Begin();
+            spriteBatch.Begin();            
             spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
-            spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
+            r.mp.Draw(spriteBatch, gameTime);
+            //spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
 
             foreach (Ennemies ennemie in r.ennemies)
             {

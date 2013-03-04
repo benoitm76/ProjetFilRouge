@@ -32,6 +32,7 @@ namespace FileRouge.GameElements
         public ContentManager content { get; set; }
         public float distancy_meters { get; set; }
         public Vector2 player_position { get; set; }
+        public MainPlayer mp { get; set; }
 
         public int timeSpeedDown { get; set; }
 
