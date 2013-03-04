@@ -18,7 +18,7 @@ namespace FileRouge
 
             // Initialisation du GraphicsDeviceManager
             // pour obtenir une fenêtre de dimensions 800*480
-            new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 1024, PreferredBackBufferHeight = 600 };
+            new GraphicsDeviceManager(this) { PreferredBackBufferWidth = 1280, PreferredBackBufferHeight = 720 };
 
             // Création du gestionnaire de scènes
             var sceneMgr = new SceneManager(this);

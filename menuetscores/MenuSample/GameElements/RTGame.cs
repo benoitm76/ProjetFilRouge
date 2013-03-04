@@ -31,6 +31,7 @@ namespace FileRouge.GameElements
         public static int controller { get; set; }
         public ContentManager content { get; set; }
         public float distancy_meters { get; set; }
+        public Vector2 player_position { get; set; }
 
         public int timeSpeedDown { get; set; }
 
@@ -61,13 +62,13 @@ namespace FileRouge.GameElements
                 {
                     case 0:
                         //Mine
-                        newEnnemi = new Mine(size_window, this);
+                        newEnnemi = new ShiftEnnemies(size_window, this);
                         break;
-                    case 1:
-                        newEnnemi = new Mine(size_window, this);
+                    case 10:
+                        newEnnemi = new MovingEnnemies(size_window, this);
                         break;
-                    case 2:
-                        newEnnemi = new Mine(size_window, this);
+                    case 20:
+                        newEnnemi = new FollowingEnnemies(size_window, this);
                         break;
                     default:
                         break;
@@ -75,7 +76,7 @@ namespace FileRouge.GameElements
                 if (newEnnemi != null)
                 {
                     newEnnemi.LoadContent(content);
-                    Vector2 pos = new Vector2((int)size_window.X, random.Next(70, (int)(size_window.Y - newEnnemi.texture.Height - 70)));
+                    Vector2 pos = new Vector2((int)size_window.X, random.Next(0, (int)(size_window.Y - newEnnemi.texture.Height)));
                     newEnnemi.position = pos;
                     ennemies.Add(newEnnemi);
                 }

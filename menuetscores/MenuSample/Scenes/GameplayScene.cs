@@ -28,7 +28,7 @@ namespace FileRouge.Scenes
         private ContentManager _content;
         private SpriteFont _gameFont;
         private float _pauseAlpha;
-        private Vector2 _playerPosition;
+        //private Vector2 _playerPosition;
 
         #endregion
 
@@ -176,7 +176,8 @@ namespace FileRouge.Scenes
                 if (movement.Length() > 1)
                     movement.Normalize();
 
-                _playerPosition += movement * 2;
+                Vector2 _playerPosition = r.player_position + movement * 4;
+                r.player_position = _playerPosition;
             }
         }
 
@@ -185,7 +186,7 @@ namespace FileRouge.Scenes
             GraphicsDevice.Clear(ClearOptions.Target, Color.Orange, 0, 0);
             spriteBatch.Begin();
             spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
-            spriteBatch.DrawString(_gameFont, "8==p", _playerPosition, Color.Green);
+            spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
 
             foreach (Ennemies ennemie in r.ennemies)
             {

@@ -70,8 +70,11 @@
     <Compile Include="GameElements\Bonu\Bonus.cs" />
     <Compile Include="GameElements\Bonu\Heal.cs" />
     <Compile Include="GameElements\Core\Sprite.cs" />
+    <Compile Include="GameElements\Ennemy\ShiftEnnemies.cs" />
+    <Compile Include="GameElements\Ennemy\FollowingEnnemies.cs" />
     <Compile Include="GameElements\Ennemy\Ennemies.cs" />
     <Compile Include="GameElements\Ennemy\Mine.cs" />
+    <Compile Include="GameElements\Ennemy\MovingEnnemies.cs" />
     <Compile Include="GameElements\RTGame.cs" />
     <Compile Include="GestionScores\EnrLireScores.cs" />
     <Compile Include="GestionScores\Scores.cs" />
