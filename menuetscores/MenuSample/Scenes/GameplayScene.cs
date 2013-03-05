@@ -220,6 +220,10 @@ namespace FileRouge.Scenes
                 lbonus.Draw(spriteBatch, gameTime);
             }
 
+            spriteBatch.Draw(_content.Load<Texture2D>("laser"), new Vector2(100, 100), null, new Color(15, 153, 254, 255),
+                       0, Vector2.Zero, new Vector2(1000, 1),
+                       SpriteEffects.None, 0);
+
             spriteBatch.End();
 
             if (TransitionPosition > 0 || _pauseAlpha > 0)

@@ -24,13 +24,13 @@ namespace FileRouge.GameElements.Ennemy
             float newVerticalPos = 0;
             newVerticalPos = position.Y;
 
-            if ((int)rtgame.player_position.Y > (int)position.Y)
+            if ((int)rtgame.mp.position.Y > (int)position.Y)
             {
-                newVerticalPos = position.Y + 0.5f;
+                newVerticalPos = position.Y + 2f;
             }
-            else if ((int)rtgame.player_position.Y < (int)position.Y)
+            else if ((int)rtgame.mp.position.Y < (int)position.Y)
             {
-                newVerticalPos = position.Y - 0.5f;
+                newVerticalPos = position.Y - 2f;
             }
 
             Vector2 newPos = new Vector2(position.X - displacementX, newVerticalPos);

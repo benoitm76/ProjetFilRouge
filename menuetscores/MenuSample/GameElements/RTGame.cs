@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using FileRouge.GameElements.Bonu;
 using FileRouge.GameElements.Ennemy;
+using FileRouge.Leveling;
 
 namespace FileRouge.GameElements
 {
@@ -33,6 +34,7 @@ namespace FileRouge.GameElements
         public float distancy_meters { get; set; }
         public Vector2 player_position { get; set; }
         public MainPlayer mp { get; set; }
+        public List<DropEnnemies> level;
 
         public int timeSpeedDown { get; set; }
 
@@ -51,11 +53,37 @@ namespace FileRouge.GameElements
 
             this.size_window = size_window;
             this.content = content;
+
+            level = new List<DropEnnemies>();
+
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 500, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 550, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 600, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 650, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 700, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 750, size_window.Y * 0.3f));
+
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1000, size_window.X / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1100, size_window.X / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.X / 2));
         }
 
         public void generateEnnemies()
         {
-            if (ennemies.Count < maxEnnemies)
+            if (level.Count != 0)
+            {
+                if (distance > level[0].distanceDrop)
+                {
+                    Ennemies newEnnemi = level[0].ennemie;
+                    newEnnemi.LoadContent(content);
+                    Vector2 pos = new Vector2((int)size_window.X, level[0].verticalPosition);
+                    newEnnemi.position = pos;
+                    ennemies.Add(newEnnemi);
+                    level.RemoveAt(0);
+                }
+            }
+            //Génération aléatoire des ennemies
+            /*if (ennemies.Count < maxEnnemies)
             {
                 int rm = random.Next(0, 20);
                 Ennemies newEnnemi = null;
@@ -81,7 +109,7 @@ namespace FileRouge.GameElements
                     newEnnemi.position = pos;
                     ennemies.Add(newEnnemi);
                 }
-            }
+            }*/
         }
 
         public void generateBonus()

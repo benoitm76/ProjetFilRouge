@@ -84,6 +84,7 @@
     <Compile Include="GameElements\RTGame.cs" />
     <Compile Include="GestionScores\EnrLireScores.cs" />
     <Compile Include="GestionScores\Scores.cs" />
+    <Compile Include="Leveling\DropEnnemies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\ScoresMenuScene.cs" />
     <Compile Include="Scenes\Core\AbstractGameScene.cs" />
