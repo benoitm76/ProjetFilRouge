@@ -11,8 +11,11 @@ namespace FileRouge.Armement
         public Missile1(Vector2 size_window)
             : base(size_window)
         {
+
+
+
+
+
         }
-
-
     }
 }
