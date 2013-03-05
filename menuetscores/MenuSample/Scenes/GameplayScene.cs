@@ -29,8 +29,13 @@ namespace FileRouge.Scenes
         private ContentManager _content;
         private SpriteFont _gameFont;
         private float _pauseAlpha;
-        //private Vector2 _playerPosition;
 
+        //bar de vie
+        private Texture2D mVie;
+        private Texture2D mBou;
+        private SpriteFont tVie;
+
+        //private Vector2 _playerPosition;
         #endregion
 
         #region Initialization
@@ -63,6 +68,12 @@ namespace FileRouge.Scenes
             _background = _content.Load<Texture2D>(@"game_background");
 
             _gameFont = _content.Load<SpriteFont>("gamefont");
+
+            mVie = _content.Load<Texture2D>("vie");
+
+            tVie = _content.Load<SpriteFont>("VieSP");
+
+            mBou = _content.Load<Texture2D>("Bouclier");
 
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
@@ -209,6 +220,29 @@ namespace FileRouge.Scenes
             spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
             r.mp.Draw(spriteBatch, gameTime);
             //spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
+
+
+            //AFFICHAGE DE LA VIE
+           int coeur = 120;
+            for (int nb = 1; nb< r.mp.health  ; nb++)
+            {
+                spriteBatch.Draw(mVie, new Rectangle(coeur, 10, mVie.Width, mVie.Height), Color.White);
+
+                coeur = coeur + 35;
+            }
+
+            //Bouclier
+            int bouclier = 130;
+            for (int nb = 1; nb < 3; nb++)
+            {
+                spriteBatch.Draw(mBou, new Rectangle(bouclier, 42, mBou.Width, mBou.Height), Color.White);
+
+                bouclier = bouclier + 30;
+            }
+            //text DE LA VIE
+            spriteBatch.DrawString(tVie,"Vie(s) :", new Vector2(20, 10), Color.Red);
+
+
 
             foreach (Ennemies ennemie in r.ennemies)
             {
