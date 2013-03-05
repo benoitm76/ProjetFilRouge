@@ -107,7 +107,7 @@ namespace FileRouge.GameElements
         public void touched()
         {
             health--;
-            nb_frame_invulnerability = 80;
+            nb_frame_invulnerability = 100;
         }
     }
 }

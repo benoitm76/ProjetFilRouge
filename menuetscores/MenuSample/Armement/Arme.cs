@@ -15,6 +15,6 @@ namespace FileRouge.Armement
         public const int LevelArme = 1;
         protected ArrayList Missile;
         protected int DegArme;
-        public abstract void ArmeCarct;
+        public abstract void ArmeCarct();
     }
 }

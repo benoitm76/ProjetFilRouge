@@ -10,6 +10,11 @@ namespace FileRouge.Armement
     {
         protected Vector2 PosMissile;
         protected int VitMissile;
+
+        public Missile(Vector2 size_window)
+            : base(size_window)
+        {
+        }
     
     }
 }
