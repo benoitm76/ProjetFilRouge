@@ -38,7 +38,7 @@ namespace FileRouge.GameElements.Core
                     for (int x = left; x < right; x++)
                     {
                         Color colorA = coul_A[(x - rect_A.Left) + (y - rect_A.Top) * rect_A.Width];
-                        Color colorB = coul_A[(x - rect_B.Left) + (y - rect_B.Top) * rect_B.Width];
+                        Color colorB = coul_B[(x - rect_B.Left) + (y - rect_B.Top) * rect_B.Width];
 
                         if (colorA.A != 0 && colorB.A != 0)
                         {

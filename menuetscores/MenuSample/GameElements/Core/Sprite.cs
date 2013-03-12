@@ -14,6 +14,7 @@ namespace FileRouge.GameElements.Core
         public Texture2D texture { get; set; }
         public Vector2 position { get; set; }
         public Vector2 size_window { get; set; }
+        public Vector2 size { get; set; }
 
         public Color[] color { get; set; }
 
@@ -28,7 +29,7 @@ namespace FileRouge.GameElements.Core
 
         public virtual void LoadContent(ContentManager content, string assetName)
         {
-            texture = content.Load<Texture2D>(assetName);
+            texture = LoaderTexture.loadTexture(content, assetName);
             color = new Color[texture.Width * texture.Height];
             texture.GetData(color);
         }
@@ -46,9 +47,14 @@ namespace FileRouge.GameElements.Core
             spriteBatch.Draw(texture, position, Color.White);
         }
 
-        public Rectangle getRectangle()
+        public virtual Rectangle getRectangle()
         {
             return new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+        }
+
+        public virtual Color[] getColor()
+        {
+            return color;
         }
     }
 }

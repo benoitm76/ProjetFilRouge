@@ -10,6 +10,7 @@ using FileRouge.GameElements;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using FileRouge.GameElements.Core;
+using FileRouge.Armement;
 
 namespace FileRouge.Scenes
 {
@@ -67,6 +68,8 @@ namespace FileRouge.Scenes
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
             r.mp.LoadContent(_content);
+            r.mp.arme = new SimpleGun(size_window, r);
+            r.mp.arme.position = new Vector2(r.mp.position.X + 256, r.mp.position.Y + 50);
 
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
@@ -92,8 +95,6 @@ namespace FileRouge.Scenes
         public override void Update(GameTime gameTime, bool othersceneHasFocus, bool coveredByOtherscene)
         {
             base.Update(gameTime, othersceneHasFocus, false);
-            r.mp.HandleInput();
-            r.mp.Update(gameTime);
 
             _pauseAlpha = coveredByOtherscene 
                 ? Math.Min(_pauseAlpha + 1f / 32, 1) 
@@ -109,6 +110,8 @@ namespace FileRouge.Scenes
                 }
 
                 int displacementX = (int)(5 * r.vitesse);
+                r.mp.HandleInput(gameTime);
+                r.mp.Update(gameTime, displacementX);
 
                 List<Ennemies> destroy_ennemies = new List<Ennemies>();
                 Parallel.ForEach(r.ennemies, ennemie =>
@@ -116,7 +119,7 @@ namespace FileRouge.Scenes
                         ennemie.Update(gameTime, displacementX);
                         if (r.mp.nb_frame_invulnerability == 0)
                         {
-                            if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.color, ennemie.getRectangle(), ennemie.color))
+                            if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.getColor(), ennemie.getRectangle(), ennemie.getColor()))
                             {
                                 destroy_ennemies.Add(ennemie);
                                 r.mp.touched();
@@ -132,7 +135,7 @@ namespace FileRouge.Scenes
                 Parallel.ForEach(r.bonus, bonu =>
                 {
                     bonu.Update(gameTime, displacementX);
-                    if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.color, bonu.getRectangle(), bonu.color))
+                    if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.getColor(), bonu.getRectangle(), bonu.getColor()))
                     {
                         bonu.applyBonus();
                         destroy_bonus.Add(bonu);
@@ -207,7 +210,7 @@ namespace FileRouge.Scenes
             GraphicsDevice.Clear(ClearOptions.Target, Color.Orange, 0, 0);
             spriteBatch.Begin();            
             spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
-            r.mp.Draw(spriteBatch, gameTime);
+            
             //spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
 
             foreach (Ennemies ennemie in r.ennemies)
@@ -220,10 +223,10 @@ namespace FileRouge.Scenes
                 lbonus.Draw(spriteBatch, gameTime);
             }
 
-            spriteBatch.Draw(_content.Load<Texture2D>("laser"), new Vector2(100, 100), null, new Color(15, 153, 254, 255),
+            /*spriteBatch.Draw(_content.Load<Texture2D>("laser"), new Vector2(100, 100), null, new Color(15, 153, 254, 255),
                        0, Vector2.Zero, new Vector2(1000, 1),
-                       SpriteEffects.None, 0);
-
+                       SpriteEffects.None, 0);*/
+            r.mp.Draw(spriteBatch, gameTime);
             spriteBatch.End();
 
             if (TransitionPosition > 0 || _pauseAlpha > 0)

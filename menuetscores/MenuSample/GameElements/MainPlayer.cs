@@ -7,14 +7,17 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements
 {
-    class MainPlayer : Sprite
+    class MainPlayer : ChangingSprite
     {
         public float coefDep { get; set; }
         public int health;
         public int nb_frame_invulnerability { get; set; }
+        public Arme arme { get; set; }
+        public Vector2 oldPosition { get; set; }
 
         private RTGame rtgame;
 
@@ -24,9 +27,11 @@ namespace FileRouge.GameElements
             this.rtgame = rtgame;
             health = 5;
             coefDep = 5f;
+            size = new Vector2(256, 105);
+            nbrSprite = 3;
         }
 
-        public void HandleInput()
+        public void HandleInput(GameTime gameTime)
         {
             Vector2 displacement = new Vector2();
             Vector2 newPos = new Vector2(position.X, position.Y);
@@ -48,27 +53,31 @@ namespace FileRouge.GameElements
             {
                 displacement.X = -1;
             }
+            if(keyboardState.IsKeyDown(Keys.Space))
+            {
+                arme.fire(gameTime);
+            }
             newPos.X = newPos.X + displacement.X * coefDep;
             newPos.Y = newPos.Y + displacement.Y * coefDep;
 
             position = newPos;
         }
 
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gameTime, int displacementX)
         {
             //On vérifie que la particule ne sorte pas de l'écran
             Vector2 newPos = new Vector2(position.X, position.Y);
-            if (newPos.X + texture.Width > size_window.X)
+            if (newPos.X + size.X > size_window.X)
             {
-                newPos.X = size_window.X - texture.Width;
+                newPos.X = size_window.X - size.X;
             }
             if (newPos.X < 0)
             {
                 newPos.X = 0;
             }
-            if (newPos.Y + texture.Height > size_window.Y - 0)
+            if (newPos.Y + size.Y > size_window.Y - 0)
             {
-                newPos.Y = size_window.Y - texture.Height - 0;
+                newPos.Y = size_window.Y - size.Y - 0;
             }
             if (newPos.Y < 0)
             {
@@ -77,17 +86,32 @@ namespace FileRouge.GameElements
 
             position = newPos;
 
+            if (position.Y == oldPosition.Y)            
+                spriteShow = 1;
+            
+            else if (position.Y > oldPosition.Y)
+                spriteShow = 0;
+            else
+                spriteShow = 2;
+
+            oldPosition = position;
+            
+
             if (nb_frame_invulnerability != 0)
             {
                 nb_frame_invulnerability--;
             }
+
+            arme.position = new Vector2(position.X + 256, position.Y + 80);
+            arme.Update(gameTime, displacementX);            
         }
 
         public void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "vaisseau");
+            base.LoadContent(content, "avion");
 
-            position = new Vector2(50, (size_window.Y - texture.Height) / 2);
+            position = new Vector2(50, (size_window.Y - size.Y) / 2);
+            oldPosition = position;
         }
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
@@ -100,8 +124,9 @@ namespace FileRouge.GameElements
                 {
                     color = Color.Transparent;
                 }                
-            }                  
-            spriteBatch.Draw(texture, position, color);
+            }
+            arme.Draw(spriteBatch,gameTime);
+            spriteBatch.Draw(texture, position, new Rectangle((int)size.X * spriteShow, 0, (int)size.X, (int)size.Y), color);
         }
 
         public void touched()

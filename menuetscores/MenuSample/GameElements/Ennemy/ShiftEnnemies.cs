@@ -20,6 +20,8 @@ namespace FileRouge.GameElements.Ennemy
             startShift = (int)(size_window.X - size_window.X * 0.3f);
             endShift = (int)(size_window.X - size_window.X * 0.7f);
             heightShift = (int)(size_window.Y * 0.4f);
+            size = new Vector2(100, 101);
+            nbrSprite = 1;
         }
 
         public override void fire()
@@ -58,7 +60,7 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "mine");
+            base.LoadContent(content, "cocote");
         }
     }
 }

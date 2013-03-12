@@ -67,13 +67,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Armement\Arme.cs" />
-    <Compile Include="Armement\Arme1.cs" />
+    <Compile Include="Armement\SimpleBeam.cs" />
+    <Compile Include="Armement\SimpleGun.cs" />
     <Compile Include="Armement\Missile.cs" />
-    <Compile Include="Armement\Missile1.cs" />
+    <Compile Include="Armement\SimpleLaser.cs" />
+    <Compile Include="Armement\SimpleMissile.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameElements\Bonu\Bonus.cs" />
-    <Compile Include="GameElements\Bonu\Heal.cs" />
+    <Compile Include="GameElements\Bonus\Bonus.cs" />
+    <Compile Include="GameElements\Bonus\Heal.cs" />
+    <Compile Include="GameElements\Core\ChangingSprite.cs" />
     <Compile Include="GameElements\Core\Collision.cs" />
+    <Compile Include="GameElements\Core\LoaderTexture.cs" />
     <Compile Include="GameElements\Core\Sprite.cs" />
     <Compile Include="GameElements\Ennemy\ShiftEnnemies.cs" />
     <Compile Include="GameElements\Ennemy\FollowingEnnemies.cs" />

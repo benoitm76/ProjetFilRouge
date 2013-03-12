@@ -56,7 +56,6 @@ namespace FileRouge.GameElements
 
             level = new List<DropEnnemies>();
 
-            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 500, size_window.Y * 0.3f));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 550, size_window.Y * 0.3f));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 600, size_window.Y * 0.3f));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 650, size_window.Y * 0.3f));

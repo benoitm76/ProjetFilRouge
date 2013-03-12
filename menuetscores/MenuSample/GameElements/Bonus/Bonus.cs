@@ -8,17 +8,17 @@ using Microsoft.Xna.Framework.Content;
 
 namespace FileRouge.GameElements
 {
-    abstract class Ennemies : ChangingSprite
+    abstract class Bonus : Sprite
     {
         protected RTGame rtgame;
 
-        public Ennemies(Vector2 size_window, RTGame rtgame)
+        public Bonus(Vector2 size_window, RTGame rtgame)
             : base(size_window)
         {
             this.rtgame = rtgame;
         }
 
-        public abstract void fire();
+        public abstract void applyBonus();
 
         public abstract void LoadContent(ContentManager content);
 

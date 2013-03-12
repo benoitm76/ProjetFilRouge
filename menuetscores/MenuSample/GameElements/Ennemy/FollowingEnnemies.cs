@@ -9,9 +9,13 @@ namespace FileRouge.GameElements.Ennemy
 {
     class FollowingEnnemies : Ennemies
     {
+        private int lastUpdate;
+
         public FollowingEnnemies(Vector2 size_window, RTGame rtgame)
             : base(size_window, rtgame)
         {
+            size = new Vector2(128, 130);
+            nbrSprite = 8;
         }
 
         public override void fire()
@@ -21,6 +25,17 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime, int displacementX)
         {
+            lastUpdate++;
+            if (lastUpdate % 15 == 0)
+            {
+                lastUpdate = 0;
+                spriteShow++;
+                if (spriteShow == 8)
+                {
+                    spriteShow = 0;
+                }
+            }
+
             float newVerticalPos = 0;
             newVerticalPos = position.Y;
 
@@ -39,7 +54,13 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "mine");
+            base.LoadContent(content, "shuriken");
+        }
+
+        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            //base.Draw(spriteBatch, gameTime);
+            spriteBatch.Draw(texture, position, new Rectangle((int)size.X * spriteShow, 0, (int)size.X, (int)size.Y), Color.White);
         }
     }
 }
