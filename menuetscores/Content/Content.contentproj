@@ -100,8 +100,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="baboule.png">
       <Name>baboule</Name>
+		<Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+	</ItemGroup>
+  <ItemGroup>
+    <Compile Include="vie.png">
+      <Name>vie</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -123,6 +131,20 @@
   <ItemGroup>
     <Compile Include="cocote.png">
       <Name>cocote</Name>
+<Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="VieSP.spritefont">
+      <Name>VieSP</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bouclier.png">
+      <Name>bouclier</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
