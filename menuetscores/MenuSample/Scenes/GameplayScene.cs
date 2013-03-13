@@ -85,7 +85,7 @@ namespace FileRouge.Scenes
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
             // puissiez admirer la magnifique scène de chargement. :p
-            //Thread.Sleep(1000);
+            Thread.Sleep(1000);
 
             // En cas de longs période de traitement, appelez cette méthode *tintintin*.
             // Elle indique au mécanisme de synchronisation du jeu que vous avez fini un
@@ -248,7 +248,9 @@ namespace FileRouge.Scenes
                 bouclier = bouclier + 30;
             }
             //text DE LA VIE
-            spriteBatch.DrawString(tVie,"Vie(s) :", new Vector2(20, 10), Color.Red);
+            spriteBatch.DrawString(tVie," Vie(s) :", new Vector2(20, 10), Color.Red);
+
+            spriteBatch.DrawString(tVie, Math.Round(1000.0d / gameTime.ElapsedGameTime.TotalMilliseconds) + "FPS", new Vector2((int)size_window.X - 150, 10), Color.Blue);
 
 
 
