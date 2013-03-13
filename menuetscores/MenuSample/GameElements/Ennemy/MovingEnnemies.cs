@@ -12,9 +12,13 @@ namespace FileRouge.GameElements.Ennemy
     {
         private int direction_move = 1;
 
+        private int lastUpdate;
+
         public MovingEnnemies(Vector2 size_window, RTGame rtgame)
             : base(size_window, rtgame)
-        {            
+        {
+            nbrSprite = 2;
+            size = new Vector2(285, 256);
         }
 
         public override void fire(Microsoft.Xna.Framework.GameTime gameTime)
@@ -24,6 +28,17 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime, int displacementX)
         {
+            lastUpdate++;
+            if (lastUpdate % 15 == 0)
+            {
+                lastUpdate = 0;
+                spriteShow++;
+                if (spriteShow == nbrSprite)
+                {
+                    spriteShow = 0;
+                }
+            }
+
             float newVerticalPos = 0;
             newVerticalPos = position.Y;
             newVerticalPos += (float)Math.Sin(Math.Cos(position.X / 100)) * 5;
@@ -45,7 +60,13 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "mine");
+            base.LoadContent(content, "passon");
+        }
+
+        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            //base.Draw(spriteBatch, gameTime);
+            spriteBatch.Draw(texture, position, new Rectangle((int)size.X * spriteShow, 0, (int)size.X, (int)size.Y), Color.White);
         }
     }
 }

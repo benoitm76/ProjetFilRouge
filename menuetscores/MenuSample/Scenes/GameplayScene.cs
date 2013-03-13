@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FileRouge.GameElements.Core;
 using FileRouge.Armement;
+using Microsoft.Xna.Framework.Media;
 
 namespace FileRouge.Scenes
 {
@@ -35,6 +36,8 @@ namespace FileRouge.Scenes
         private Texture2D mVie;
         private Texture2D mBou;
         private SpriteFont tVie;
+
+        private Song mainTheme;
 
         //private Vector2 _playerPosition;
         #endregion
@@ -66,7 +69,7 @@ namespace FileRouge.Scenes
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _background = _content.Load<Texture2D>(@"game_background");
+            _background = LoaderTexture.loadTexture(_content, "game_background");
 
             _gameFont = _content.Load<SpriteFont>("gamefont");
 
@@ -75,6 +78,21 @@ namespace FileRouge.Scenes
             tVie = _content.Load<SpriteFont>("VieSP");
 
             mBou = LoaderTexture.loadTexture(_content, "Bouclier");
+
+            // Chargement de toute les textures
+            LoaderTexture.loadTexture(_content, "cocote");
+            LoaderTexture.loadTexture(_content, "avion");
+            LoaderTexture.loadTexture(_content, "baboule");
+            LoaderTexture.loadTexture(_content, "heal");
+            LoaderTexture.loadTexture(_content, "laser");
+            LoaderTexture.loadTexture(_content, "mine");
+            LoaderTexture.loadTexture(_content, "shuriken");
+            LoaderTexture.loadTexture(_content, "passon");
+
+            mainTheme = _content.Load<Song>("Sounds/sp");
+
+            MediaPlayer.Volume = 0.3f;
+            MediaPlayer.IsRepeating = true;
 
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
@@ -85,7 +103,7 @@ namespace FileRouge.Scenes
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
             // puissiez admirer la magnifique scène de chargement. :p
-            Thread.Sleep(1000);
+            //Thread.Sleep(1000);
 
             // En cas de longs période de traitement, appelez cette méthode *tintintin*.
             // Elle indique au mécanisme de synchronisation du jeu que vous avez fini un
@@ -96,7 +114,13 @@ namespace FileRouge.Scenes
 
         protected override void UnloadContent()
         {
-            _content.Unload();
+            if (_content != null)
+                _content.Unload();
+            if (MediaPlayer.State == MediaState.Playing)
+            {
+                MediaPlayer.Stop();
+            }
+            mainTheme.Dispose();
         }
 
         #endregion
@@ -113,6 +137,14 @@ namespace FileRouge.Scenes
 
             if (IsActive)
             {
+                if (MediaPlayer.State == MediaState.Stopped)
+                {
+                    MediaPlayer.Play(mainTheme);
+                }
+                else if (MediaPlayer.State == MediaState.Paused)
+                {
+                    MediaPlayer.Resume();
+                }
 
                 scrollX = (int)(scrollX + 5);
                 if (scrollX >= _background.Width - size_window.X)
@@ -175,6 +207,13 @@ namespace FileRouge.Scenes
                 if (scrollX % 20 == 0)
                 {
                     Parallel.Invoke(r.generateEnnemies, r.generateBonus);
+                }
+            }
+            else
+            {
+                if (MediaPlayer.State == MediaState.Playing)
+                {
+                    MediaPlayer.Pause();
                 }
             }
         }
