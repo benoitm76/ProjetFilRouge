@@ -16,7 +16,6 @@ namespace FileRouge.Scenes.Core
         #region Fields
 
         public KinectInput ki;
-
         private double position;
         private Boolean scores;
 

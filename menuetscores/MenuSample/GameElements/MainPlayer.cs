@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Kinect;
+using TestKinect;
 using FileRouge.GameElements.Core;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -19,6 +21,10 @@ namespace FileRouge.GameElements
         public Arme arme { get; set; }
         public Vector2 oldPosition { get; set; }
         protected Vector2 correctionArme { get; set; }
+        
+        public KinectInput ki;
+        private double positionY;
+        private double positionX;
 
         private RTGame rtgame;
 
@@ -30,6 +36,43 @@ namespace FileRouge.GameElements
             coefDep = 5f;
             size = new Vector2(256, 105);
             nbrSprite = 3;
+
+            // Prise en charge de Kinect
+            ki = new KinectInput();
+            ki.playerMove += move;
+            ki.playerFire += handSelect;
+        }
+
+        public void move()
+        {
+            Vector2 displacement = new Vector2();
+            Vector2 newPos = new Vector2(position.X, position.Y);
+            positionY = ki.oldPointLeftHand.Y;
+            positionX = ki.oldPointLeftHand.X;
+
+            if (positionY > 0.2)
+                displacement.Y = -1;
+            else if (positionY < -0.2)
+                displacement.Y = 1;
+            else
+                displacement.Y = 0;
+
+            if (positionX > 0.2)
+                displacement.X = -1;
+            else if (positionX < -0.2)
+                displacement.X = 1;
+            else
+                displacement.X = 0;
+
+            newPos.X = newPos.X + displacement.X * coefDep;
+            newPos.Y = newPos.Y + displacement.Y * coefDep;
+
+            position = newPos;
+        }
+
+        public void handSelect(/*GameTime gameTime*/)
+        {
+            //arme.fire(gameTime);
         }
 
         public void HandleInput(GameTime gameTime)
