@@ -18,19 +18,16 @@ namespace FileRouge.Scenes
         {
             // Création des options
             var playGameMenuItem = new MenuItem("Lancer le jeu");
-            var optionsMenuItem = new MenuItem("Options");
             var scoresMenuItem = new MenuItem("Scores");
             var exitMenuItem = new MenuItem("Quitter");
 
             // Gestion des évènements
             playGameMenuItem.Selected += PlayGameMenuItemSelected;
-            optionsMenuItem.Selected += OptionsMenuItemSelected;
             scoresMenuItem.Selected += ScoresMenuItemSelected;
             exitMenuItem.Selected += OnCancel;
 
             // Ajout des options du menu
             MenuItems.Add(playGameMenuItem);
-            MenuItems.Add(optionsMenuItem);
             MenuItems.Add(scoresMenuItem);
             MenuItems.Add(exitMenuItem);
         }
@@ -44,11 +41,6 @@ namespace FileRouge.Scenes
             LoadingScene.Load(SceneManager, true, new GameplayScene(SceneManager));
         }
 
-        private void OptionsMenuItemSelected(object sender, EventArgs e)
-        {
-            new OptionsMenuScene(SceneManager).Add();
-        }
-
         private void ScoresMenuItemSelected(object sender, EventArgs e)
         {
              LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
@@ -56,17 +48,18 @@ namespace FileRouge.Scenes
 
         protected override void OnCancel()
         {
-            const string message = "Etes vous sur de vouloir quitter?\n";
+            SceneManager.Game.Exit();
+            /*const string message = "Etes vous sur de vouloir quitter?\n";
             var confirmExitMessageBox = new MessageBoxScene(SceneManager, message);
 
             confirmExitMessageBox.Accepted += ConfirmExitMessageBoxAccepted;
-            confirmExitMessageBox.Add();
+            confirmExitMessageBox.Add();*/
         }
 
-        private void ConfirmExitMessageBoxAccepted(object sender, EventArgs e)
+        /*private void ConfirmExitMessageBoxAccepted(object sender, EventArgs e)
         {
             SceneManager.Game.Exit();
-        }
+        }*/
 
         #endregion
     }
