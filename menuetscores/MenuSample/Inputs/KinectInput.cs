@@ -24,26 +24,34 @@ namespace TestKinect
 
         public KinectInput()
         {
-            if (KinectSensor.KinectSensors[0] != null)
+
+            try
             {
-                this.sensor = KinectSensor.KinectSensors[0];
-                sensor.SkeletonStream.Enable();
-                try
+                if (KinectSensor.KinectSensors[0] != null)
                 {
-                    this.sensor.Start();
+                    this.sensor = KinectSensor.KinectSensors[0];
+                    sensor.SkeletonStream.Enable();
+                    try
+                    {
+                        this.sensor.Start();
+                    }
+                    catch (IOException)
+                    {
+                        throw new Exception();
+                    }
                 }
-                catch (IOException)
+                else
                 {
                     throw new Exception();
                 }
+                onContinueFire = false;
+                sensor.SkeletonFrameReady += onSkeletonFrameReady;
             }
-            else
+            catch (Exception)
             {
-                throw new Exception();
             }
-            onContinueFire = false;
 
-            sensor.SkeletonFrameReady += onSkeletonFrameReady;
+            
         }
 
         private void onSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)

@@ -69,6 +69,12 @@ namespace FileRouge.Scenes.Core
 
         #region Handle Input
 
+        public override void HandleInput()
+        {
+            if (InputState.IsMenuCancel())
+                OnCancel();
+        }
+
         /// <summary>
         /// Annulation dans le menu.
         /// </summary>
