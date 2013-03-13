@@ -21,6 +21,8 @@ namespace FileRouge.GameElements.Core
         public ChangingSprite(Vector2 size_window)
             : base(size_window)
         {
+            nbrSprite = 1;
+            size = new Vector2(123, 150);
         }
 
         public override void LoadContent(ContentManager content, string assetName)

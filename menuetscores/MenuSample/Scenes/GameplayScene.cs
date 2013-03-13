@@ -88,6 +88,7 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "mine");
             LoaderTexture.loadTexture(_content, "shuriken");
             LoaderTexture.loadTexture(_content, "passon");
+            LoaderTexture.loadTexture(_content, "noiseau");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
@@ -97,8 +98,7 @@ namespace FileRouge.Scenes
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
             r.mp.LoadContent(_content);
-            r.mp.arme = new DoubleGun(size_window, r, true);
-            r.mp.arme.position = new Vector2(r.mp.position.X + 256, r.mp.position.Y + 50);
+            r.mp.newArme(new DoubleGun(size_window, r, true), 256, 85);
 
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous

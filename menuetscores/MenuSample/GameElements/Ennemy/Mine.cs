@@ -21,7 +21,7 @@ namespace FileRouge.GameElements.Ennemy
 
         public override void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "mine");
+            base.LoadContent(content, "noiseau");
         }
     }
 }

@@ -18,6 +18,7 @@ namespace FileRouge.GameElements
         public int nb_frame_invulnerability { get; set; }
         public Arme arme { get; set; }
         public Vector2 oldPosition { get; set; }
+        protected Vector2 correctionArme { get; set; }
 
         private RTGame rtgame;
 
@@ -102,8 +103,14 @@ namespace FileRouge.GameElements
                 nb_frame_invulnerability--;
             }
 
-            arme.position = new Vector2(position.X + 256, position.Y + 80);
+            arme.position = new Vector2(position.X + correctionArme.X, position.Y + correctionArme.Y);
             arme.Update(gameTime, displacementX);            
+        }
+
+        public void newArme(Arme arme, int x, int y)
+        {
+            this.arme = arme;
+            correctionArme = new Vector2(x, y);
         }
 
         public void LoadContent(ContentManager content)
@@ -132,7 +139,7 @@ namespace FileRouge.GameElements
         public void touched()
         {
             health--;
-            nb_frame_invulnerability = 100;
+            nb_frame_invulnerability = 60;
         }
     }
 }

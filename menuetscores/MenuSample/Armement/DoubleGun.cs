@@ -18,7 +18,7 @@ namespace FileRouge.Armement
             : base(size_window, rtgame, ennemyermainplayer)
         {
             NomArme = "Double Gun";
-            color = Color.Yellow;
+            color = new Color(15, 153, 254, 255);
         }
 
         public override void ArmeCarct()

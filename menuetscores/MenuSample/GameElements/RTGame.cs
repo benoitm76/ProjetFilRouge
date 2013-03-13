@@ -73,6 +73,13 @@ namespace FileRouge.GameElements
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1500, 200));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1600, 400));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1700, 600));
+
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 200));
         }
 
         public void generateEnnemies()
