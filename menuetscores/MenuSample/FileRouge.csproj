@@ -67,6 +67,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Armement\Arme.cs" />
+    <Compile Include="Armement\DoubleGun.cs" />
     <Compile Include="Armement\SimpleBeam.cs" />
     <Compile Include="Armement\SimpleGun.cs" />
     <Compile Include="Armement\Missile.cs" />

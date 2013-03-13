@@ -9,16 +9,16 @@ using FileRouge.Scenes.Core;
 using Microsoft.Xna.Framework.Content;
 using FileRouge.GameElements;
 using FileRouge.GameElements.Core;
-using FileRouge.GameElements.Ennemy;
 
 namespace FileRouge.Armement
 {
-    class SimpleGun : Arme
+    class DoubleGun : SimpleGun
     {
-        public SimpleGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer) : base(size_window, rtgame, ennemyermainplayer)
+        public DoubleGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer)
+            : base(size_window, rtgame, ennemyermainplayer)
         {
-            NomArme = "Simple Gun";
-            color = Color.Red;
+            NomArme = "Double Gun";
+            color = Color.Yellow;
         }
 
         public override void ArmeCarct()
@@ -53,15 +53,22 @@ namespace FileRouge.Armement
             if (((TimeSpan)(gameTime.TotalGameTime - lastShot)).TotalMilliseconds > CadTir)
             {
                 SimpleMissile missile = new SimpleMissile(size_window);
-                missile.position = position;
+                SimpleMissile missile2 = new SimpleMissile(size_window);
+                Vector2 p = new Vector2(position.X, position.Y - 20);
+                missile.position = p;
                 missile.VitMissile = 3;
                 missile.LoadContent(rtgame.content);
                 missiles.Add(missile);
+                Vector2 p2 = new Vector2(position.X, position.Y + 20);
+                missile2.position = p2;
+                missile2.VitMissile = 3;
+                missile2.LoadContent(rtgame.content);
+                missiles.Add(missile2);
                 lastShot = gameTime.TotalGameTime;
             }            
         }
 
-        public override void Update(GameTime gameTime, int displacementX)
+        /*public override void Update(GameTime gameTime, int displacementX)
         {
             List<Missile> destroy_missile = new List<Missile>();
             List<Ennemies> destroy_ennemies = new List<Ennemies>();
@@ -70,60 +77,36 @@ namespace FileRouge.Armement
             Parallel.ForEach(missiles, missile =>
             {
                 //On met a jour sa position
-                if (EnnemyOrMainPlayer)
-                    missile.Update(gameTime, displacementX);
-                else
-                    missile.Update(gameTime, -displacementX);             
-
+                missile.Update(gameTime, displacementX);
                 //On vérifie qu'il sort pas de l'écran
-                if (missile.position.X >= size_window.X - missile.texture.Width && missile.position.X <= 0 - missile.texture.Width)
+                if (missile.position.X >= size_window.X - missile.texture.Width)
                 {
                     destroy_missile.Add(missile);
                 }
-
-                if (EnnemyOrMainPlayer)
+                //On vérifie si il percute un énnemie
+                Parallel.ForEach(rtgame.ennemies, ennemie =>
                 {
-                    //On vérifie si il percute un énnemie
-                    Parallel.ForEach(rtgame.ennemies, ennemie =>
-                    {
-                        if (Collision.CheckCollision(missile.getRectangle(), missile.getColor(), ennemie.getRectangle(), ennemie.getColor()))
-                        {
-                            destroy_missile.Add(missile);
-                            destroy_ennemies.Add(ennemie);
-                        }
-                    });
-                }
-                else
-                {
-                    if (Collision.CheckCollision(missile.getRectangle(), missile.getColor(), rtgame.mp.getRectangle(), rtgame.mp.getColor()))
+                    if (Collision.CheckCollision(missile.getRectangle(), missile.getColor(), ennemie.getRectangle(), ennemie.getColor()))
                     {
                         destroy_missile.Add(missile);
-                        rtgame.mp.touched();
+                        destroy_ennemies.Add(ennemie);
                     }
-                }
-            });            
+               });
+            });
+
             foreach (Missile m in destroy_missile)
                 missiles.Remove(m);
             foreach (Ennemies e in destroy_ennemies)
-            {
                 rtgame.ennemies.Remove(e);
-                if(e.arme != null)
-                    rtgame.missileRestant.Add(e.arme);
-            }
-
         }
-            
 
         public override void Draw(SpriteBatch spriteBatch, GameTime gameTime)
         {
-            foreach (SimpleMissile m in missiles)
+            foreach (Missile m in missiles)
             {
-                if (EnnemyOrMainPlayer)
-                    m.Draw(spriteBatch, gameTime, color, 0f);
-                else
-                    m.Draw(spriteBatch, gameTime, color, (float)(Math.PI));
-            }           
-        }
+                m.Draw(spriteBatch, gameTime);
+            }            
+        }*/
     }
     
 }

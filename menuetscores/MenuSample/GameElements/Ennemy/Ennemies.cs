@@ -5,6 +5,7 @@ using System.Text;
 using FileRouge.GameElements.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements
 {
@@ -12,13 +13,15 @@ namespace FileRouge.GameElements
     {
         protected RTGame rtgame;
 
+        public Arme arme { get; set; }
+
         public Ennemies(Vector2 size_window, RTGame rtgame)
             : base(size_window)
         {
             this.rtgame = rtgame;
         }
 
-        public abstract void fire();
+        public abstract void fire(Microsoft.Xna.Framework.GameTime gameTime);
 
         public abstract void LoadContent(ContentManager content);
 

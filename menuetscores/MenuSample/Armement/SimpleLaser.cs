@@ -14,8 +14,8 @@ namespace FileRouge.Armement
     {
         public int beamDuration { get; set; }
 
-        public SimpleLaser(Vector2 size_window, RTGame rtgame)
-            : base(size_window, rtgame)
+        public SimpleLaser(Vector2 size_window, RTGame rtgame, Boolean ennemyormainplayer)
+            : base(size_window, rtgame, ennemyormainplayer)
         {
             NomArme = "Simple Laser";
         }

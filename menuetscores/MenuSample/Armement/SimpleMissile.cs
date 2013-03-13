@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace FileRouge.Armement
 {
@@ -30,7 +31,15 @@ namespace FileRouge.Armement
 
         public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GameTime gameTime)
         {
-            spriteBatch.Draw(texture, position, Color.Red);
+            spriteBatch.Draw(texture, position, Color.Red);       
+        }
+
+        public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GameTime gameTime, Color color, float angle)
+        {
+            //spriteBatch.Draw(texture, position, Color.Red);
+            spriteBatch.Draw(texture, position, null, color, angle,
+                new Vector2(texture.Width / 2, texture.Height / 2) , 1.0f, SpriteEffects.None, 0f);
+
         }
     }
 }

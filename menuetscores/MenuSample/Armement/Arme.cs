@@ -21,11 +21,14 @@ namespace FileRouge.Armement
         protected TimeSpan lastShot;
         protected Boolean IsContinuedShot = false;
         protected RTGame rtgame;
+        protected Boolean EnnemyOrMainPlayer;
+        public Color color { get; set; }
 
-        public Arme(Vector2 size_window, RTGame rtgame)
+        public Arme(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer)
             : base(size_window)
         {
             this.rtgame = rtgame;
+            this.EnnemyOrMainPlayer = ennemyermainplayer;
             missiles = new List<Missile>();
             ArmeCarct();
         }

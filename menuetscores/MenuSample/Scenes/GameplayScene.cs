@@ -70,16 +70,16 @@ namespace FileRouge.Scenes
 
             _gameFont = _content.Load<SpriteFont>("gamefont");
 
-            mVie = _content.Load<Texture2D>("vie");
+            mVie = LoaderTexture.loadTexture(_content, "vie");
 
             tVie = _content.Load<SpriteFont>("VieSP");
 
-            mBou = _content.Load<Texture2D>("Bouclier");
+            mBou = LoaderTexture.loadTexture(_content, "Bouclier");
 
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
             r.mp.LoadContent(_content);
-            r.mp.arme = new SimpleGun(size_window, r);
+            r.mp.arme = new DoubleGun(size_window, r, true);
             r.mp.arme.position = new Vector2(r.mp.position.X + 256, r.mp.position.Y + 50);
 
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
@@ -123,6 +123,11 @@ namespace FileRouge.Scenes
                 int displacementX = (int)(5 * r.vitesse);
                 r.mp.HandleInput(gameTime);
                 r.mp.Update(gameTime, displacementX);
+
+                foreach (Arme arme in r.missileRestant)
+                {
+                    arme.Update(gameTime, displacementX);
+                }
 
                 List<Ennemies> destroy_ennemies = new List<Ennemies>();
                 Parallel.ForEach(r.ennemies, ennemie =>
@@ -226,7 +231,7 @@ namespace FileRouge.Scenes
 
 
             //AFFICHAGE DE LA VIE
-           int coeur = 120;
+            int coeur = 120;
             for (int nb = 1; nb< r.mp.health  ; nb++)
             {
                 spriteBatch.Draw(mVie, new Rectangle(coeur, 10, mVie.Width, mVie.Height), Color.White);
@@ -255,6 +260,11 @@ namespace FileRouge.Scenes
             foreach (Bonus lbonus in r.bonus)
             {
                 lbonus.Draw(spriteBatch, gameTime);
+            }
+
+            foreach (Arme arme in r.missileRestant)
+            {
+                arme.Draw(spriteBatch, gameTime);
             }
 
             /*spriteBatch.Draw(_content.Load<Texture2D>("laser"), new Vector2(100, 100), null, new Color(15, 153, 254, 255),

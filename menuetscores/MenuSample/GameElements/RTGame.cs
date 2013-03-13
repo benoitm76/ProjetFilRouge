@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Content;
 using FileRouge.GameElements.Bonu;
 using FileRouge.GameElements.Ennemy;
 using FileRouge.Leveling;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements
 {
@@ -36,6 +37,8 @@ namespace FileRouge.GameElements
         public MainPlayer mp { get; set; }
         public List<DropEnnemies> level;
 
+        public List<Arme> missileRestant { get; set; }
+
         public int timeSpeedDown { get; set; }
 
         public Random random;
@@ -50,6 +53,7 @@ namespace FileRouge.GameElements
             ennemies = new List<Ennemies>();
             bonus = new List<Bonus>();
             random = new Random();
+            missileRestant = new List<Arme>();
 
             this.size_window = size_window;
             this.content = content;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements.Ennemy
 {
@@ -13,10 +14,10 @@ namespace FileRouge.GameElements.Ennemy
 
         public MovingEnnemies(Vector2 size_window, RTGame rtgame)
             : base(size_window, rtgame)
-        {
+        {            
         }
 
-        public override void fire()
+        public override void fire(Microsoft.Xna.Framework.GameTime gameTime)
         {
             throw new NotImplementedException();
         }

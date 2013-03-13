@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements.Ennemy
 {
@@ -22,11 +23,12 @@ namespace FileRouge.GameElements.Ennemy
             heightShift = (int)(size_window.Y * 0.4f);
             size = new Vector2(100, 101);
             nbrSprite = 1;
+            arme = new SimpleGun(size_window, rtgame, false);
         }
 
-        public override void fire()
+        public override void fire(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            throw new NotImplementedException();
+            arme.fire(gameTime);
         }
 
         public override void Update(Microsoft.Xna.Framework.GameTime gameTime, int displacementX)
@@ -52,15 +54,24 @@ namespace FileRouge.GameElements.Ennemy
                 float pourcShift = (float)displacementX / (startShift - endShift);
                 newVerticalPos += pourcShift * heightShift * directionMove;
                 newHorizontalPos = newHorizontalPos - 2;
+                fire(gameTime);
             }
 
             Vector2 newPos = new Vector2(newHorizontalPos, newVerticalPos);
             position = newPos;
+            arme.position = position;
+            arme.Update(gameTime, displacementX);
         }
 
         public override void LoadContent(ContentManager content)
         {
             base.LoadContent(content, "cocote");
+        }
+
+        public override void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch, GameTime gameTime)
+        {
+            base.Draw(spriteBatch, gameTime);
+            arme.Draw(spriteBatch, gameTime);
         }
     }
 }

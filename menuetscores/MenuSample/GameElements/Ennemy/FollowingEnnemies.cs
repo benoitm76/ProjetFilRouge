@@ -18,7 +18,7 @@ namespace FileRouge.GameElements.Ennemy
             nbrSprite = 8;
         }
 
-        public override void fire()
+        public override void fire(Microsoft.Xna.Framework.GameTime gameTime)
         {
             throw new NotImplementedException();
         }
