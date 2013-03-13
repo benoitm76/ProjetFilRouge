@@ -14,11 +14,14 @@ namespace FileRouge.GameElements
     class MainPlayer : ChangingSprite
     {
         public float coefDep { get; set; }
-        public int health;
+        public int health { get; set; }
+        public int shield { get; set; }
         public int nb_frame_invulnerability { get; set; }
         public Arme arme { get; set; }
         public Vector2 oldPosition { get; set; }
         protected Vector2 correctionArme { get; set; }
+        public Texture2D textureShield { get; set; }
+        public Color[] colorShield {get; set;}
 
         private RTGame rtgame;
 
@@ -27,6 +30,7 @@ namespace FileRouge.GameElements
         {
             this.rtgame = rtgame;
             health = 5;
+            shield = 3;
             coefDep = 5f;
             size = new Vector2(256, 105);
             nbrSprite = 3;
@@ -117,6 +121,10 @@ namespace FileRouge.GameElements
         {
             base.LoadContent(content, "avion");
 
+            textureShield = LoaderTexture.loadTexture(content, "bubullepasrondetr");
+            colorShield = new Color[textureShield.Width * textureShield.Height];
+            textureShield.GetData(colorShield);
+
             position = new Vector2(50, (size_window.Y - size.Y) / 2);
             oldPosition = position;
         }
@@ -134,11 +142,18 @@ namespace FileRouge.GameElements
             }
             arme.Draw(spriteBatch,gameTime);
             spriteBatch.Draw(texture, position, new Rectangle((int)size.X * spriteShow, 0, (int)size.X, (int)size.Y), color);
+            if (shield > 0)
+            {
+                spriteBatch.Draw(textureShield, position, Color.White);
+            }
         }
 
         public void touched()
         {
-            health--;
+            if (shield > 0)
+                shield--;
+            else
+                health--;
             nb_frame_invulnerability = 60;
         }
     }

@@ -89,6 +89,7 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "shuriken");
             LoaderTexture.loadTexture(_content, "passon");
             LoaderTexture.loadTexture(_content, "noiseau");
+            LoaderTexture.loadTexture(_content, "bubullepasrondetr");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
@@ -98,7 +99,7 @@ namespace FileRouge.Scenes
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
             r.mp.LoadContent(_content);
-            r.mp.newArme(new DoubleGun(size_window, r, true), 256, 85);
+            r.mp.newArme(new EpicGun(size_window, r, true), 256, 85);
 
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
@@ -167,10 +168,23 @@ namespace FileRouge.Scenes
                         ennemie.Update(gameTime, displacementX);
                         if (r.mp.nb_frame_invulnerability == 0)
                         {
-                            if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.getColor(), ennemie.getRectangle(), ennemie.getColor()))
+                            //Si le sheild est activé on vérifie la collision par rapport a ce dernier
+                            if (r.mp.shield > 0)
                             {
-                                destroy_ennemies.Add(ennemie);
-                                r.mp.touched();
+                                if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.colorShield, ennemie.getRectangle(), ennemie.getColor()))
+                                {
+                                    destroy_ennemies.Add(ennemie);
+                                    r.mp.touched();
+                                }
+                            }
+                            //Sinon on vérifie normalement
+                            else
+                            {
+                                if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.getColor(), ennemie.getRectangle(), ennemie.getColor()))
+                                {
+                                    destroy_ennemies.Add(ennemie);
+                                    r.mp.touched();
+                                }
                             }
                         }
                         if (ennemie.position.X < 0 - ennemie.texture.Width)
@@ -280,7 +294,7 @@ namespace FileRouge.Scenes
 
             //Bouclier
             int bouclier = 130;
-            for (int nb = 1; nb < 3; nb++)
+            for (int nb = 1; nb < r.mp.shield + 1; nb++)
             {
                 spriteBatch.Draw(mBou, new Rectangle(bouclier, 42, mBou.Width, mBou.Height), Color.White);
 
