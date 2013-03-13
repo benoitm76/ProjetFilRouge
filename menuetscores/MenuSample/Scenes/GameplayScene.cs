@@ -99,7 +99,7 @@ namespace FileRouge.Scenes
             r.mp = new MainPlayer(new Vector2(size_window.X, size_window.Y), r);
             r.mp.Initialize();
             r.mp.LoadContent(_content);
-            r.mp.newArme(new EpicGun(size_window, r, true), 256, 85);
+            r.mp.newArme(new SimpleGun(size_window, r, true), 256, 85);
 
             // Un vrai jeu possède évidemment plus de contenu que ça, et donc cela prend
             // plus de temps à charger. On simule ici un chargement long pour que vous
