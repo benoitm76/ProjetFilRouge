@@ -16,7 +16,7 @@ namespace FileRouge.Scenes
     /// <summary>
     /// Un exemple de menu d'options
     /// </summary>
-    public class ScoresMenuScene : AbstractMenuScene
+    public class ScoresMenuScene : AbstractScoresScene
     {
         private SpriteFont font;
         private SpriteBatch spriteBatch;

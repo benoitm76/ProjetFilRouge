@@ -40,19 +40,22 @@ namespace FileRouge.Scenes
 
         private void QuitGameMenuItemSelected(object sender, EventArgs e)
         {
-            const string message = "Etes vous sur de vouloir quitter ce jeu?\n";
+            Remove();
+            _parent.Remove();
+            LoadingScene.Load(SceneManager, false);
+            /*const string message = "Etes vous sur de vouloir quitter ce jeu?\n";
             var confirmQuitMessageBox = new MessageBoxScene(SceneManager, message);
 
             confirmQuitMessageBox.Accepted += ConfirmQuitMessageBoxAccepted;
-            confirmQuitMessageBox.Add();
+            confirmQuitMessageBox.Add();*/
         }
 
-        private void ConfirmQuitMessageBoxAccepted(object sender, EventArgs e)
+        /*private void ConfirmQuitMessageBoxAccepted(object sender, EventArgs e)
         {
             Remove();
             _parent.Remove();
             LoadingScene.Load(SceneManager, false);
-        }
+        }*/
 
         #endregion
     }

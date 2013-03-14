@@ -151,14 +151,14 @@ namespace FileRouge.Scenes
                     enrScores.AjouterScore("Guigou", Math.Round(r.distance).ToString());
                     new ScoresMenuScene(_sceneManager).Add();
                 }
-                if (MediaPlayer.State == MediaState.Stopped)
+                /*if (MediaPlayer.State == MediaState.Stopped)
                 {
                     MediaPlayer.Play(mainTheme);
                 }
                 else if (MediaPlayer.State == MediaState.Paused)
                 {
                     MediaPlayer.Resume();
-                }
+                }*/
 
                 scrollX = (int)(scrollX + 5);
                 if (scrollX >= _background.Width - size_window.X)

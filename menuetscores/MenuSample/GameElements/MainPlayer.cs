@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using FileRouge.Inputs;
 using FileRouge.GameElements.Core;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -28,6 +29,11 @@ namespace FileRouge.GameElements
 
         public List<ApplyBonus> listBonus { get; set; }
 
+
+        public KinectInput ki;
+        private double positionY;
+        private double positionX;
+        private Boolean feuKinect;
         private RTGame rtgame;
 
         public MainPlayer(Vector2 size_window, RTGame rtgame)
@@ -42,6 +48,99 @@ namespace FileRouge.GameElements
             size = new Vector2(256, 105);
             nbrSprite = 3;
             this.listBonus = new List<ApplyBonus>();
+
+            // Prise en charge de Kinect
+            ki = new KinectInput();
+            ki.playerMove += move;
+            ki.playerFire += handSelect;
+            feuKinect = false;
+        }
+
+        public void move()
+        {
+            Vector2 displacement = new Vector2();
+            Vector2 newPos = new Vector2(position.X, position.Y);
+            positionY = ki.oldPointLeftHand.Y;
+            positionX = ki.oldPointLeftHand.X;
+
+
+            //Déplacement verticaux
+            if (positionY > 0)
+            {
+                displacement.Y = -1;
+                if (positionY > 0.05)
+                {
+                    displacement.Y = -2;
+                    if (positionY > 0.1)
+                    {
+                        displacement.Y = -3;
+                        if (positionY > 0.2)
+                        {
+                            displacement.Y = -4;
+                        }
+                    }
+                }
+            }
+            else if (positionY < 0)
+            {
+                displacement.Y = 1;
+                if (positionY < -0.05)
+                {
+                    displacement.Y = 2;
+                    if (positionY < -0.1)
+                    {
+                        displacement.Y = 3;
+                        if (positionY < -0.2)
+                        {
+                            displacement.Y = 4;
+                        }
+                    }
+                }
+            }
+
+            //Déplacement horizontaux
+            if (positionX < -0.15)
+            {
+                displacement.X = -1;
+                if (positionX < -0.2)
+                {
+                    displacement.X = -2;
+                    if (positionX < -0.25)
+                    {
+                        displacement.X = -3;
+                        if (positionX < -0.3)
+                        {
+                            displacement.X = -4;
+                        }
+                    }
+                }
+            }
+            else if (positionX > -0.15)
+            {
+                displacement.X = 1;
+                if (positionX > -0.1)
+                {
+                    displacement.X = 2;
+                    if (positionX > -0.05)
+                    {
+                        displacement.X = 3;
+                        if (positionX > 0)
+                        {
+                            displacement.X = 4;
+                        }
+                    }
+                }
+            }
+
+            newPos.X = newPos.X + displacement.X * coefDep;
+            newPos.Y = newPos.Y + displacement.Y * coefDep;
+
+            position = newPos;
+        }
+
+        public void handSelect()
+        {
+            feuKinect = true;
         }
 
         public void HandleInput(GameTime gameTime)
@@ -69,6 +168,11 @@ namespace FileRouge.GameElements
             if(keyboardState.IsKeyDown(Keys.Space))
             {
                 arme.fire(gameTime);
+            }
+            if (feuKinect == true)
+            {
+                arme.fire(gameTime);
+                feuKinect = false;
             }
             newPos.X = newPos.X + displacement.X * coefDep;
             newPos.Y = newPos.Y + displacement.Y * coefDep;
