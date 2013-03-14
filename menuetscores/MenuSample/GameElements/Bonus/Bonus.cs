@@ -11,6 +11,7 @@ namespace FileRouge.GameElements
     abstract class Bonus : Sprite
     {
         protected RTGame rtgame;
+        public int duration;
 
         public Bonus(Vector2 size_window, RTGame rtgame)
             : base(size_window)
@@ -19,6 +20,8 @@ namespace FileRouge.GameElements
         }
 
         public abstract void applyBonus();
+
+        public abstract void disableBonus();
 
         public abstract void LoadContent(ContentManager content);
 

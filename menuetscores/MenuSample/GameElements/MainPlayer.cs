@@ -25,6 +25,8 @@ namespace FileRouge.GameElements
         public int maxShield { get; set; }
         public int maxHealth { get; set; }
 
+        public List<ApplyBonus> listBonus;
+
         private RTGame rtgame;
 
         public MainPlayer(Vector2 size_window, RTGame rtgame)
@@ -74,6 +76,16 @@ namespace FileRouge.GameElements
 
         public void Update(GameTime gameTime, int displacementX)
         {
+            foreach (ApplyBonus ab in listBonus)
+            {
+                List<ApplyBonus> destroy_apply_bonus = new List<ApplyBonus>();
+                if (((TimeSpan)(gameTime.TotalGameTime - ab.g.TotalGameTime)).TotalMilliseconds > ab.b.duration)
+                {
+                    ab.b.disableBonus();
+                    destroy_apply_bonus.Remove(ab);
+                }
+            }
+
             //On vérifie que la particule ne sorte pas de l'écran
             Vector2 newPos = new Vector2(position.X, position.Y);
             if (newPos.X + size.X > size_window.X)
@@ -159,6 +171,12 @@ namespace FileRouge.GameElements
             else
                 health--;
             nb_frame_invulnerability = 60;
+        }
+
+        public class ApplyBonus
+        {
+            public Bonus b { get; set; }
+            public GameTime g { get; set; }
         }
     }
 }
