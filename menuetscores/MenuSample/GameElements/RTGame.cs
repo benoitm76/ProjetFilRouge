@@ -284,7 +284,8 @@ namespace FileRouge.GameElements
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9000, 100));
             level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9000, size_window.Y / 4));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9000, size_window.Y * 0.2f));
-            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9000, 0)); level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7730, 0));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9000, 0)); 
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7730, 0));
             level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9000, size_window.Y / 2));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9100, size_window.Y * 0.4f));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9150, 500));
@@ -324,8 +325,6 @@ namespace FileRouge.GameElements
             //vague 6
             //vague 7
             //vague 8
-
->>>>>>> 00aedbea5b12b175e360eb488a16a9fc9a245f96
         }
 
         public void generateEnnemies()
