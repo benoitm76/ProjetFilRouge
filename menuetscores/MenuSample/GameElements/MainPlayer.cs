@@ -33,7 +33,7 @@ namespace FileRouge.GameElements
         public KinectInput ki;
         private double positionY;
         private double positionX;
-        private Boolean feuKinect;
+        private int feuKinect;
         private RTGame rtgame;
 
         public MainPlayer(Vector2 size_window, RTGame rtgame)
@@ -53,7 +53,7 @@ namespace FileRouge.GameElements
             ki = new KinectInput();
             ki.playerMove += move;
             ki.playerFire += handSelect;
-            feuKinect = false;
+            feuKinect = 0;
         }
 
         public void move()
@@ -140,7 +140,7 @@ namespace FileRouge.GameElements
 
         public void handSelect()
         {
-            feuKinect = true;
+            feuKinect = 5;
         }
 
         public void HandleInput(GameTime gameTime)
@@ -169,10 +169,10 @@ namespace FileRouge.GameElements
             {
                 arme.fire(gameTime);
             }
-            if (feuKinect == true)
+            if (feuKinect != 0)
             {
                 arme.fire(gameTime);
-                feuKinect = false;
+                feuKinect--;
             }
             newPos.X = newPos.X + displacement.X * coefDep;
             newPos.Y = newPos.Y + displacement.Y * coefDep;

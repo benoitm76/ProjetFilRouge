@@ -23,20 +23,29 @@ namespace FileRouge.Scenes
 
             // Création des options
             var resumeGameMenuItem = new MenuItem("Revenir au jeu");
+            var scoresMenuItem = new MenuItem("Scores");
             var quitGameMenuItem = new MenuItem("Quitter le jeu");
             
             // Gestion des évènements
             resumeGameMenuItem.Selected += OnCancel;
             quitGameMenuItem.Selected += QuitGameMenuItemSelected;
+            scoresMenuItem.Selected += ScoresMenuItemSelected;
 
             // Ajout des options du menu
             MenuItems.Add(resumeGameMenuItem);
+            MenuItems.Add(scoresMenuItem);
             MenuItems.Add(quitGameMenuItem);
         }
 
         #endregion
 
         #region Handle Input
+
+        private void ScoresMenuItemSelected(object sender, EventArgs e)
+        {
+            LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
+        }
+
 
         private void QuitGameMenuItemSelected(object sender, EventArgs e)
         {
