@@ -188,9 +188,11 @@ namespace FileRouge.Scenes
                 {
                     this.Remove();
                     MediaPlayer.Stop();
-                    EnrLireScores enrScores = new EnrLireScores();
-                    enrScores.AjouterScore("FriZBy", Math.Round(r.distance).ToString());
-                    new ScoresMenuScene(_sceneManager).Add();
+                    PseudoScene pseudoScene = new PseudoScene(_sceneManager, r);
+                    //EnrLireScores enrScores = new EnrLireScores();
+                    //enrScores.AjouterScore("FriZBy", Math.Round(r.distance).ToString());
+                    //new ScoresMenuScene(_sceneManager).Add();
+                    pseudoScene.Add();
                 }
                 /*if (MediaPlayer.State == MediaState.Stopped)
                 {

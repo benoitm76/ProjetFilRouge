@@ -99,9 +99,11 @@
     <Compile Include="GestionScores\EnrLireScores.cs" />
     <Compile Include="GestionScores\Scores.cs" />
     <Compile Include="Inputs\KinectInput.cs" />
+    <Compile Include="Inputs\Textbox.cs" />
     <Compile Include="Leveling\DropEnnemies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Scenes\Core\AbstractScoresScene.cs" />
+    <Compile Include="Scenes\PseudoScene.cs" />
     <Compile Include="Scenes\ScoresMenuScene.cs" />
     <Compile Include="Scenes\Core\AbstractGameScene.cs" />
     <Compile Include="Inputs\InputState.cs" />
