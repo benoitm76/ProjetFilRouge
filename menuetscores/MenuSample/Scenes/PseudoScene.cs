@@ -51,7 +51,10 @@ namespace FileRouge.Scenes
             textbox.Update(gameTime);
             if (Textbox.Pseudo != "Default" && Textbox.Pseudo != "")
             {
-                Textbox.Pseudo = "Default";
+                EnrLireScores enrScores = new EnrLireScores();
+                enrScores.AjouterScore(Textbox.Pseudo, Math.Round(rtgame.distance).ToString());
+                new ScoresMenuScene(_sceneManager).Add();
+                this.Remove();
             }
             base.Update(gameTime);
         }
