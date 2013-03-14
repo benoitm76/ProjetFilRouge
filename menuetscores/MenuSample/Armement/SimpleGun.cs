@@ -15,6 +15,9 @@ namespace FileRouge.Armement
 {
     class SimpleGun : Arme
     {
+        public TimeSpan lastShotRaf { get; set; }
+        public int shotRestRaf { get; set; }
+
         public SimpleGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer) : base(size_window, rtgame, ennemyermainplayer)
         {
             NomArme = "Simple Gun";
@@ -52,17 +55,39 @@ namespace FileRouge.Armement
         {
             if (((TimeSpan)(gameTime.TotalGameTime - lastShot)).TotalMilliseconds > CadTir)
             {
-                SimpleMissile missile = new SimpleMissile(size_window);
-                missile.position = position;
-                missile.VitMissile = 3;
-                missile.LoadContent(rtgame.content);
-                missiles.Add(missile);
-                lastShot = gameTime.TotalGameTime;
-            }            
+                if (EnnemyOrMainPlayer)
+                {
+                    shotRestRaf = 3;
+                    lastShot = gameTime.TotalGameTime;
+                }
+                else
+                {
+                    SimpleMissile missile = new SimpleMissile(size_window);
+                    missile.position = position;
+                    missile.VitMissile = 3;
+                    missile.LoadContent(rtgame.content);
+                    missiles.Add(missile);
+                    lastShot = gameTime.TotalGameTime;
+                }
+            }
         }
 
         public override void Update(GameTime gameTime, int displacementX)
         {
+            if (EnnemyOrMainPlayer)
+            {
+                if (shotRestRaf > 0 && ((TimeSpan)(gameTime.TotalGameTime - lastShotRaf)).TotalMilliseconds > 200)
+                {
+                    SimpleMissile missile = new SimpleMissile(size_window);
+                    missile.position = position;
+                    missile.VitMissile = 3;
+                    missile.LoadContent(rtgame.content);
+                    missiles.Add(missile);
+                    lastShotRaf = gameTime.TotalGameTime;
+                    shotRestRaf--;
+                }
+            }
+
             List<Missile> destroy_missile = new List<Missile>();
             List<Ennemies> destroy_ennemies = new List<Ennemies>();
 
