@@ -24,7 +24,6 @@ namespace FileRouge.Inputs
 
         public KinectInput()
         {
-
             try
             {
                 if (KinectSensor.KinectSensors[0] != null)

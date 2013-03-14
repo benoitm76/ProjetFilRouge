@@ -23,6 +23,8 @@ namespace FileRouge.Scenes
     {
         #region Fields
 
+        public KinectInput ki;
+
         SpriteBatch spriteBatch;
 
         private Vector2 size_window;
@@ -43,6 +45,30 @@ namespace FileRouge.Scenes
         //private Vector2 _playerPosition;
         #endregion
 
+        #region FriZBy
+
+        private int iBackgroundOffset;
+
+        public int BackgroundOffset
+        {
+            get { return iBackgroundOffset; }
+            set
+            {
+                iBackgroundOffset = value;
+                if (iBackgroundOffset < 0)
+                {
+                    iBackgroundOffset += _background.Width;
+                }
+                if (iBackgroundOffset > _background.Width)
+                {
+                    iBackgroundOffset -= _background.Width;
+                }
+            }
+        }
+
+        #endregion
+
+
         #region Initialization
 
         /// <summary>
@@ -51,6 +77,9 @@ namespace FileRouge.Scenes
         public GameplayScene(SceneManager sceneMgr)
             : base(sceneMgr)
         {
+            // Prise en charge de Kinect
+            /*ki = new KinectInput();
+            ki.playerMove += move;*/
 
             _pauseAlpha = 0;
 
@@ -64,6 +93,15 @@ namespace FileRouge.Scenes
 
             r = new RTGame(size_window, _content);
         }
+
+        /*public void move()
+        {
+            //Accée menu
+            if (ki.oldPointRightHand.X > 0.5 && ki.oldPointRightHand.Y > 0.5)
+            {
+                new PauseMenuScene(SceneManager, this).Add();
+            }
+        }*/
 
         protected override void LoadContent()
         {
@@ -148,7 +186,7 @@ namespace FileRouge.Scenes
                     this.Remove();
                     MediaPlayer.Stop();
                     EnrLireScores enrScores = new EnrLireScores();
-                    enrScores.AjouterScore("Guigou", Math.Round(r.distance).ToString());
+                    enrScores.AjouterScore("FriZBy", Math.Round(r.distance).ToString());
                     new ScoresMenuScene(_sceneManager).Add();
                 }
                 /*if (MediaPlayer.State == MediaState.Stopped)
@@ -165,6 +203,8 @@ namespace FileRouge.Scenes
                 {
                     scrollX = 0;
                 }
+
+                iBackgroundOffset += 5;
 
                 int displacementX = (int)(5 * r.vitesse);
                 r.mp.HandleInput(gameTime);
@@ -290,8 +330,32 @@ namespace FileRouge.Scenes
         public override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(ClearOptions.Target, Color.Orange, 0, 0);
-            spriteBatch.Begin();            
-            spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
+            spriteBatch.Begin();
+
+            #region FriZBy2
+
+            spriteBatch.Draw(
+                _background,
+                new Rectangle(-1 * iBackgroundOffset,
+                              0, _background.Width,
+                              _background.Height),
+                Color.White);
+
+            if (iBackgroundOffset > _background.Width - (int)size_window.X)
+            {
+                spriteBatch.Draw(
+                    _background,
+                    new Rectangle(
+                      (-1 * iBackgroundOffset) + _background.Width,
+                      0,
+                      _background.Width,
+                      _background.Height),
+                    Color.White);
+            }
+            //spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
+            
+            #endregion
+
             
             //spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
 
