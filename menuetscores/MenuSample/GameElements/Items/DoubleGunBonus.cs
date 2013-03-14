@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
+using FileRouge.Armement;
 
 namespace FileRouge.GameElements.Items
 {
-    class SpeedUp : Bonus
+    class DoubleGunBonus : Bonus
     {
-        public SpeedUp(Vector2 size_window, RTGame rtGame)
+        public DoubleGunBonus(Vector2 size_window, RTGame rtGame)
             : base(size_window, rtGame)
         {
             duration = 5000;
@@ -16,18 +17,16 @@ namespace FileRouge.GameElements.Items
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            base.LoadContent(content, "bonus-speedup");
+            base.LoadContent(content, "weapon-double");
         }
 
         public override void applyBonus(GameTime gameTime)
         {
-            rtgame.mp.coefDep = rtgame.mp.coefDep * 1.5f;
-            rtgame.mp.listBonus.Add(new FileRouge.GameElements.MainPlayer.ApplyBonus(this, gameTime.TotalGameTime));
+            rtgame.mp.newArme(new DoubleGun(size_window, rtgame, true), 256, 85);
         }
 
         public override void disableBonus()
         {
-            rtgame.mp.coefDep = rtgame.mp.coefDep / 1.3f;
         }
     }
 }

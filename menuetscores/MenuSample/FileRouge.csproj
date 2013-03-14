@@ -78,6 +78,8 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameElements\Items\Bonus.cs" />
     <Compile Include="GameElements\Items\Bouclier.cs" />
+    <Compile Include="GameElements\Items\DoubleGunBonus.cs" />
+    <Compile Include="GameElements\Items\SimpleGunBonus.cs" />
     <Compile Include="GameElements\Items\SpeedUp.cs" />
     <Compile Include="GameElements\Items\Heal.cs" />
     <Compile Include="GameElements\Core\ChangingSprite.cs" />

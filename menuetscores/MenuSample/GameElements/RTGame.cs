@@ -383,14 +383,14 @@ namespace FileRouge.GameElements
                     {
                         case 0:
                             //Heal
-                            newBonus = new Bouclier(size_window, this);
+                            newBonus = new DoubleGunBonus(size_window, this);
                             break;
                         case 1:
-                            newBonus = new SpeedUp(size_window, this);
+                            newBonus = new DoubleGunBonus(size_window, this);
                             //Weapon
                             break;
                         case 2:
-                            newBonus = new Heal(size_window, this);
+                            newBonus = new SimpleGunBonus(size_window, this);
                             //Speedown
                             break;
                         default:

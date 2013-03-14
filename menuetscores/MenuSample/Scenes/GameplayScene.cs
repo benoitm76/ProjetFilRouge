@@ -93,6 +93,8 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "bubullepasrondetr");
             LoaderTexture.loadTexture(_content, "bonus-boubou");
             LoaderTexture.loadTexture(_content, "bonus-speedup");
+            LoaderTexture.loadTexture(_content, "weapon-double");
+            LoaderTexture.loadTexture(_content, "weapon-simple");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
