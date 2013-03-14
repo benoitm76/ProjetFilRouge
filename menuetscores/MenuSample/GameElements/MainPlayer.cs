@@ -52,19 +52,60 @@ namespace FileRouge.GameElements
             positionY = ki.oldPointLeftHand.Y;
             positionX = ki.oldPointLeftHand.X;
 
-            if (positionY > 0.2)
+            if (positionY > 0.025)
+            {
                 displacement.Y = -1;
-            else if (positionY < -0.2)
+                if (positionY > 0.1)
+                {
+                    displacement.Y = -2;
+                    if (positionY > 0.2)
+                    {
+                        displacement.Y = -3;
+                    }
+                }
+            }
+            else if (positionY < -0.025)
+            {
                 displacement.Y = 1;
-            else
-                displacement.Y = 0;
+                if (positionY < -0.1)
+                {
+                    displacement.Y = 2;
+                    if (positionY < -0.2)
+                    {
+                        displacement.Y = 3;
+                    }
+                }
+            }
 
-            if (positionX > 0.2)
-                displacement.X = -1;
-            else if (positionX < -0.2)
+            /*else
+                displacement.Y = 0;*/
+
+            if (positionX > -0.3)
+            {
                 displacement.X = 1;
-            else
-                displacement.X = 0;
+                if (positionX > -0.2)
+                {
+                    displacement.X = 2;
+                    if (positionX > -0.05)
+                    {
+                        displacement.X = 3;
+                    }
+                }
+            }
+            else if (positionX < -0.15)
+            {
+                displacement.X = -1;
+                if (positionX < -0.2)
+                {
+                    displacement.X = -2;
+                    if (positionX < -0.3)
+                    {
+                        displacement.X = -3;
+                    }
+                }
+            }
+            /*else
+                displacement.X = 0;*/
 
             newPos.X = newPos.X + displacement.X * coefDep;
             newPos.Y = newPos.Y + displacement.Y * coefDep;
