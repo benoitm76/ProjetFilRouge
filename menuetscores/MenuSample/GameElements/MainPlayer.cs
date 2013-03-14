@@ -99,9 +99,9 @@ namespace FileRouge.GameElements
                 spriteShow = 1;
             
             else if (position.Y > oldPosition.Y)
-                spriteShow = 0;
-            else
                 spriteShow = 2;
+            else
+                spriteShow = 0;
 
             oldPosition = position;
             

@@ -30,8 +30,7 @@ namespace FileRouge.GameElements.Core
         public virtual void LoadContent(ContentManager content, string assetName)
         {
             texture = LoaderTexture.loadTexture(content, assetName);
-            color = new Color[texture.Width * texture.Height];
-            texture.GetData(color);
+            color = LoaderTexture.loadColor(assetName);
         }
 
         public virtual void Update(GameTime gameTime)
