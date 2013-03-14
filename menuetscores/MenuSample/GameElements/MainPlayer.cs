@@ -215,7 +215,7 @@ namespace FileRouge.GameElements
 
             position = newPos;
 
-            if (position.Y == oldPosition.Y)            
+            if (position.Y == oldPosition.Y && Math.Abs(position.Y - oldPosition.Y) < 2)            
                 spriteShow = 1;
             
             else if (position.Y > oldPosition.Y)
