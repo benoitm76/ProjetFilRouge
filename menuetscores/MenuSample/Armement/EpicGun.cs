@@ -7,15 +7,20 @@ using FileRouge.GameElements;
 using System.Threading.Tasks;
 using FileRouge.GameElements.Core;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace FileRouge.Armement
 {
     class EpicGun : Arme
     {
+        protected SoundEffect explosionSound;
+
         public EpicGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer) : base(size_window, rtgame, ennemyermainplayer)
         {
             NomArme = "Simple Gun";
             color = Color.White;
+            explosionSound = rtgame.content.Load<SoundEffect>("Sounds/siffleBomb");
         }
 
         public override void ArmeCarct()
@@ -63,6 +68,7 @@ namespace FileRouge.Armement
                 missiles[0].Update(gameTime, displacementX);
                 if (missiles[0].position.X > size_window.X - 200)
                 {
+                    explosionSound.Play();
                     rtgame.ennemies = new List<Ennemies>();
                     missiles.RemoveAt(0);
                 }
