@@ -4,6 +4,7 @@ using Microsoft.Kinect;
 using FileRouge.Inputs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace FileRouge.Scenes.Core
 {
@@ -21,6 +22,8 @@ namespace FileRouge.Scenes.Core
         private readonly List<MenuItem> _menuItems = new List<MenuItem>();
         private int _selecteditem;
         private readonly string _menuTitle;
+
+        private SpriteFont infoFont;
 
         #endregion
 
@@ -51,7 +54,14 @@ namespace FileRouge.Scenes.Core
             ki = new KinectInput();
             ki.playerMove += move;
             ki.playerFire += handSelect;
-            scores = false;
+            scores = false;                   
+        }
+
+        protected override void LoadContent()
+        {
+            ContentManager Content = new ContentManager(SceneManager.Game.Services, "Content");
+
+            infoFont = Content.Load<SpriteFont>("info");
         }
 
         #endregion
@@ -186,6 +196,25 @@ namespace FileRouge.Scenes.Core
             titlePosition.Y -= transitionOffset * 100;
             spriteBatch.DrawString(font, _menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, 1, SpriteEffects.None, 0);
+            Color color = new Color();
+            String text;
+            if (!ki.isPlug)
+            {
+                text = "Kinect Déconnectée";
+                color = Color.Red;
+            }
+            else if (ki.isLeave)
+            {
+                text = "Joueur non détecté";
+                color = Color.Orange;
+            }
+            else
+            {
+                text = "Kinect OK";
+                color = Color.Green;
+            }
+            Vector2 textSize = infoFont.MeasureString(text);
+            spriteBatch.DrawString(infoFont, text, new Vector2(graphics.Viewport.Width - textSize.X - 20, graphics.Viewport.Height - textSize.Y - 20), color);
             spriteBatch.End();
         }
 

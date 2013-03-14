@@ -19,6 +19,7 @@ namespace FileRouge.Inputs
         public event playerMoved playerMove;
 
         public bool isLeave { get; set; }
+        public bool isPlug { get; set; }
         public bool onContinueFire { get; set; }
         public bool onFire { get; set; }
 
@@ -36,6 +37,7 @@ namespace FileRouge.Inputs
                     try
                     {
                         this.sensor.Start();
+                        isPlug = true;
                     }
                     catch (IOException)
                     {
@@ -88,7 +90,7 @@ namespace FileRouge.Inputs
                     {
                         isLeave = false;
                     }
-                    if ((oldPointRightHand.Z - currentSkeleton.Joints[JointType.HandRight].Position.Z >= 0.15) && !onFire)
+                    if ((oldPointRightHand.Z - currentSkeleton.Joints[JointType.HandRight].Position.Z >= 0.2) && !onFire)
                     {
                         oldPointRightHand = currentSkeleton.Joints[JointType.HandRight].Position;
                         if (onContinueFire)
@@ -127,6 +129,16 @@ namespace FileRouge.Inputs
                     isLeave = true;
                 }
             }
+        }
+
+        public void Unload()
+        {
+            playerFire = null;
+            startFire = null;
+            stopFire = null;
+            playerMove = null;
+            if(sensor != null)
+                sensor.Stop();
         }
     }
 }

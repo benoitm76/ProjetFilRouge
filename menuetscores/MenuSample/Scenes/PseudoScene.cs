@@ -59,7 +59,8 @@ namespace FileRouge.Scenes
                 EnrLireScores enrScores = new EnrLireScores();
                 enrScores.AjouterScore(Textbox.Pseudo, Math.Round(rtgame.distance).ToString());
 
-                OnCancel();
+                Remove();
+                LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
             }
         }
 

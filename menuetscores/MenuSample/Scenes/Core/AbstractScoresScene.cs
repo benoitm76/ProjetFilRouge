@@ -4,6 +4,7 @@ using Microsoft.Kinect;
 using FileRouge.Inputs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 
 namespace FileRouge.Scenes.Core
 {
@@ -117,6 +118,12 @@ namespace FileRouge.Scenes.Core
             spriteBatch.DrawString(font, _menuTitle, titlePosition, titleColor, 0,
                                    titleOrigin, 1, SpriteEffects.None, 0);
             spriteBatch.End();
+        }
+
+        protected override void UnloadContent()
+        {
+            base.UnloadContent();
+            ki.Unload();
         }
 
         #endregion

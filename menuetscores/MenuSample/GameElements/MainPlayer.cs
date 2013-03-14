@@ -215,7 +215,7 @@ namespace FileRouge.GameElements
 
             position = newPos;
 
-            if (position.Y == oldPosition.Y || !ki.isLeave)            
+            if (position.Y == oldPosition.Y || ki.isPlug)            
                 spriteShow = 1;
             
             else if (position.Y > oldPosition.Y)

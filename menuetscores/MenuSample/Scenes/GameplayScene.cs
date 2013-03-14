@@ -167,6 +167,8 @@ namespace FileRouge.Scenes
                 MediaPlayer.Stop();
             }
             mainTheme.Dispose();
+            r.mp.ki.Unload();
+            LoaderTexture.UnloadAll();
         }
 
         #endregion
@@ -183,7 +185,7 @@ namespace FileRouge.Scenes
 
             if (IsActive && ! r.mp.ki.isLeave)
             {
-                if (r.mp.health <= 0)
+                if (r.mp.health <= 0 || r.level.Count == 0)
                 {
                     this.Remove();
                     MediaPlayer.Stop();
@@ -191,8 +193,7 @@ namespace FileRouge.Scenes
                     //EnrLireScores enrScores = new EnrLireScores();
                     //enrScores.AjouterScore("FriZBy", Math.Round(r.distance).ToString());
                     //new ScoresMenuScene(_sceneManager).Add();
-                    pseudoScene.Add();
-                    LoaderTexture.UnloadAll();
+                    pseudoScene.Add();                    
                 }
                 if (MediaPlayer.State == MediaState.Stopped)
                 {
@@ -358,16 +359,16 @@ namespace FileRouge.Scenes
                     Color.White);
             }
             //spriteBatch.Draw(_background, Vector2.Zero, new Rectangle(scrollX, 0, _background.Width, _background.Height), Color.White);
-            
+
             #endregion
 
-            
+
             //spriteBatch.DrawString(_gameFont, "8==p", r.player_position, Color.Green);
 
 
             //AFFICHAGE DE LA VIE
             int coeur = 120;
-            for (int nb = 1; nb< r.mp.health + 1 ; nb++)
+            for (int nb = 1; nb < r.mp.health + 1; nb++)
             {
                 spriteBatch.Draw(mVie, new Rectangle(coeur, 10, mVie.Width, mVie.Height), Color.White);
 
@@ -383,7 +384,7 @@ namespace FileRouge.Scenes
                 bouclier = bouclier + 30;
             }
             //text DE LA VIE
-            spriteBatch.DrawString(tVie," Vie(s) :", new Vector2(20, 10), Color.Red);
+            spriteBatch.DrawString(tVie, " Vie(s) :", new Vector2(20, 10), Color.Red);
 
             spriteBatch.DrawString(tVie, Math.Round(1000.0d / gameTime.ElapsedGameTime.TotalMilliseconds) + "FPS", new Vector2((int)size_window.X - 150, 10), Color.Blue);
 
