@@ -20,7 +20,8 @@ namespace FileRouge.GameElements.Bonu
 
         public override void applyBonus()
         {
-            rtgame.mp.health++;
+            if(rtgame.mp.health < rtgame.mp.maxHealth)
+                rtgame.mp.health++;
         }
     }
 }

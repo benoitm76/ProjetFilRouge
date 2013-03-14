@@ -22,6 +22,8 @@ namespace FileRouge.GameElements
         protected Vector2 correctionArme { get; set; }
         public Texture2D textureShield { get; set; }
         public Color[] colorShield {get; set;}
+        public int maxShield { get; set; }
+        public int maxHealth { get; set; }
 
         private RTGame rtgame;
 
@@ -31,6 +33,8 @@ namespace FileRouge.GameElements
             this.rtgame = rtgame;
             health = 5;
             shield = 3;
+            maxShield = 3;
+            maxHealth = 5;
             coefDep = 5f;
             size = new Vector2(256, 105);
             nbrSprite = 3;

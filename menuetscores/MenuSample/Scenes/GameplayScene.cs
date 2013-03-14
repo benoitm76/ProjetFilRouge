@@ -138,6 +138,14 @@ namespace FileRouge.Scenes
 
             if (IsActive)
             {
+                if (r.mp.health <= 0)
+                {
+                    this.Remove();
+                    MediaPlayer.Stop();
+                    EnrLireScores enrScores = new EnrLireScores();
+                    enrScores.AjouterScore("Guigou", Math.Round(r.distance).ToString());
+                    new ScoresMenuScene(_sceneManager).Add();
+                }
                 if (MediaPlayer.State == MediaState.Stopped)
                 {
                     MediaPlayer.Play(mainTheme);
@@ -285,7 +293,7 @@ namespace FileRouge.Scenes
 
             //AFFICHAGE DE LA VIE
             int coeur = 120;
-            for (int nb = 1; nb< r.mp.health  ; nb++)
+            for (int nb = 1; nb< r.mp.health + 1 ; nb++)
             {
                 spriteBatch.Draw(mVie, new Rectangle(coeur, 10, mVie.Width, mVie.Height), Color.White);
 

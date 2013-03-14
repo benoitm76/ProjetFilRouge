@@ -21,7 +21,7 @@ namespace FileRouge.Scenes.Core
         private float _transitionPosition = 1;
         private SceneState _sceneState = SceneState.TransitionOn;
         private bool _othersceneHasFocus;
-        private readonly SceneManager _sceneManager;
+        protected readonly SceneManager _sceneManager;
         private bool _isExiting;
 
         #endregion
