@@ -18,11 +18,13 @@ namespace FileRouge.Scenes
         private SpriteBatch spriteBatch;
         private ContentManager Content;
         private Textbox textbox;
+        private int entre;
 
         public PseudoScene(SceneManager sceneMgr, RTGame rtgame)
             : base(sceneMgr, "Entrez votre pseudo :")
         {
             this.rtgame = rtgame;
+            entre = 1;
         }
 
         protected override void LoadContent()
@@ -49,14 +51,16 @@ namespace FileRouge.Scenes
         public override void Update(GameTime gameTime)
         {
             textbox.Update(gameTime);
-            if (Textbox.Pseudo != "Default" && Textbox.Pseudo != "")
+            base.Update(gameTime);
+
+            if (Textbox.Pseudo != "Default" && Textbox.Pseudo != "" && entre!=0)
             {
+                entre--;
                 EnrLireScores enrScores = new EnrLireScores();
                 enrScores.AjouterScore(Textbox.Pseudo, Math.Round(rtgame.distance).ToString());
-                new ScoresMenuScene(_sceneManager).Add();
-                this.Remove();
+
+                OnCancel();
             }
-            base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
@@ -78,6 +82,12 @@ namespace FileRouge.Scenes
 
         public new void handSelect()
         {
+        }
+
+        protected override void OnCancel()
+        {
+            Remove();
+            LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
         }
     }
 }
