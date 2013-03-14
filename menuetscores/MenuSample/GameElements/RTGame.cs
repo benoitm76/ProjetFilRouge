@@ -60,26 +60,272 @@ namespace FileRouge.GameElements
 
             level = new List<DropEnnemies>();
 
+
+            // Level 1
+
+            //vague 1
+        
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 550, size_window.Y * 0.3f));
-            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 600, size_window.Y * 0.3f));
-            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 650, size_window.Y * 0.3f));
-            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 700, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 600, size_window.Y * 0.4f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 650, size_window.Y * 0.1f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 700, size_window.Y * 0.5f));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 750, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 850, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 900, size_window.Y * 0.1f));
 
-            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1000, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1000, size_window.Y / 7));
             level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1100, size_window.Y / 2));
-            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.Y / 1));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.Y / 4));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1300, size_window.Y / 8));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1350, size_window.Y / 5));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1400, size_window.Y / 3));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1400, size_window.Y / 1));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1400, size_window.Y / 4));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1400, size_window.Y / 7));
 
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 1600, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1600, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1650, size_window.Y / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 1680, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 1750, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1750, size_window.Y / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 1750, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1800, size_window.X / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 1850, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1900, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1900, size_window.Y / 7));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1900, size_window.Y / 3));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 2000, size_window.Y / 4));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 2000, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 2000, size_window.Y / 9));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 2000, size_window.Y / 1));
+
+            //vague 2
+
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 2500, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 2650, size_window.Y * 0.1f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 2650, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2750, 200));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2750, 700));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2790, 300));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2800, 600));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2820, 200));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 2850, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2890, 610));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2890, 200));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2890, 150));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2990, 400));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 2990, 680));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 3000, size_window.Y * 0.8f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3200, 450));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3250, 150));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3260, 420));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3280, 600));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3290, 200));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3300, 720));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 3450, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 3450, size_window.Y * 0.4f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3590, 100));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3690, 720));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 3690, 300));
+
+
+            level.Add(new DropEnnemies(new Mine(size_window, this), 3800, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 3850, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 3900, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4000, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4200, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4350, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4400, 720));
+
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4500, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4550, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4600, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4650, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4700, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4750, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4800, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4850, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4900, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 4950, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5000, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5050, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5100, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5150, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5200, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5250, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5300, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5350, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5400, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5450, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5500, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5550, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5600, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5650, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5700, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5750, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5800, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5850, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5900, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 5950, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6000, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6050, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6100, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6150, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6200, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6250, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6300, 720));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6500, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6500, 700));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6500, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6500, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 6600, 720));
+            
+
+
+            //vague4
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 6900, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 6980, size_window.Y / 4));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7100, 720));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7200, 200));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7210, size_window.Y / 5));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7220, 600));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7240, size_window.Y / 1));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7300, 200));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7320, 500));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7390, 700));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 0));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 100));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 300));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 500));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7500, 720));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7550, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7560, size_window.Y / 8));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7580, size_window.Y / 4));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 7600, 720));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7650, 200));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7680, 400));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7700, 100));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7710, 700));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7730, 0));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7740, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7780, size_window.Y / 4));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7800, size_window.Y / 8));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7880, size_window.Y / 1));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7900, size_window.Y / 7));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 7990, size_window.Y / 5));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8000, 0));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8040, size_window.Y / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8080, size_window.Y * 0.4f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8110, 500));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8150, size_window.Y / 5));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8200, size_window.Y * 0.6f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8280, 200));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8310, size_window.Y / 1));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8360, size_window.Y * 0.7f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8400, 600));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8460, size_window.Y / 5));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8480, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8480, 100));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8480, size_window.Y / 4));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8480, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8600, 0));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8600, 0));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8600, size_window.Y / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8680, size_window.Y * 0.4f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8750, 500));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8800, size_window.Y / 5));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8800, size_window.Y * 0.6f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8800, 200));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8800, size_window.Y / 1));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 8870, size_window.Y * 0.7f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 8920, 600));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 8970, size_window.Y / 5));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9000, size_window.Y * 0.3f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9000, 100));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9000, size_window.Y / 4));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9000, size_window.Y * 0.2f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9000, 0)); level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 7730, 0));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9000, size_window.Y / 2));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9100, size_window.Y * 0.4f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9150, 500));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9220, size_window.Y / 5));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9300, size_window.Y * 0.6f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 9340, 200));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 9390, size_window.Y / 1));
+            level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 9390, size_window.Y * 0.7f));
+            level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 10000, 600));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 10000, size_window.Y / 5));
+            
+            /*
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1500, 200));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1600, 400));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1700, 600));
 
             level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 200));
+
             level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 600));
             level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 400));
             level.Add(new DropEnnemies(new Mine(size_window, this), 2300, 600));
             level.Add(new DropEnnemies(new Mine(size_window, this), 2400, 400));
             level.Add(new DropEnnemies(new Mine(size_window, this), 2500, 200));
+
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 200));
+
+            */
+
+            
+            //vague 3
+            //vague 4
+            //vague 5
+            //vague 6
+            //vague 7
+            //vague 8
+
+>>>>>>> 00aedbea5b12b175e360eb488a16a9fc9a245f96
         }
 
         public void generateEnnemies()
