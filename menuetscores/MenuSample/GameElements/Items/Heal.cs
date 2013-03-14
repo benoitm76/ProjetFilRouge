@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace FileRouge.GameElements.Bonu
+namespace FileRouge.GameElements.Items
 {
     class Heal : Bonus
     {
@@ -18,10 +18,14 @@ namespace FileRouge.GameElements.Bonu
             base.LoadContent(content, "heal");
         }
 
-        public override void applyBonus()
+        public override void applyBonus(GameTime gameTime)
         {
             if(rtgame.mp.health < rtgame.mp.maxHealth)
                 rtgame.mp.health++;
+        }
+
+        public override void disableBonus()
+        {
         }
     }
 }

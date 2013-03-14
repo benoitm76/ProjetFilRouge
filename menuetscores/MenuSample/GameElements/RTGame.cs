@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using FileRouge.GameElements.Bonu;
 using FileRouge.GameElements.Ennemy;
 using FileRouge.Leveling;
 using FileRouge.Armement;
+using FileRouge.GameElements.Items;
 
 namespace FileRouge.GameElements
 {
@@ -378,15 +378,15 @@ namespace FileRouge.GameElements
                 if (random.Next(0, 80 + (int)(distance / 1000 * 0.05f * 80)) == 10)
                 {
                     Bonus newBonus;
-                    int rm = random.Next(0, 2);
+                    int rm = random.Next(0, 3);
                     switch (rm)
                     {
                         case 0:
                             //Heal
-                            newBonus = new Heal(size_window, this);
+                            newBonus = new Bouclier(size_window, this);
                             break;
                         case 1:
-                            newBonus = new Heal(size_window, this);
+                            newBonus = new SpeedUp(size_window, this);
                             //Weapon
                             break;
                         case 2:

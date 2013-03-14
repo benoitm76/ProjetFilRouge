@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FileRouge.GameElements.Core;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using FileRouge.GameElements.Core;
 
-namespace FileRouge.GameElements
+namespace FileRouge.GameElements.Items
 {
     abstract class Bonus : Sprite
     {
@@ -19,7 +19,7 @@ namespace FileRouge.GameElements
             this.rtgame = rtgame;
         }
 
-        public abstract void applyBonus();
+        public abstract void applyBonus(GameTime gameTime);
 
         public abstract void disableBonus();
 

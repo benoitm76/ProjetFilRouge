@@ -76,9 +76,10 @@
     <Compile Include="Armement\SimpleLaser.cs" />
     <Compile Include="Armement\SimpleMissile.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="GameElements\Bonus\Bonus.cs" />
-    <Compile Include="GameElements\Bonus\Copie de Heal.cs" />
-    <Compile Include="GameElements\Bonus\Heal.cs" />
+    <Compile Include="GameElements\Items\Bonus.cs" />
+    <Compile Include="GameElements\Items\Bouclier.cs" />
+    <Compile Include="GameElements\Items\SpeedUp.cs" />
+    <Compile Include="GameElements\Items\Heal.cs" />
     <Compile Include="GameElements\Core\ChangingSprite.cs" />
     <Compile Include="GameElements\Core\Collision.cs" />
     <Compile Include="GameElements\Core\LoaderTexture.cs" />

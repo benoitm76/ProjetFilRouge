@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace FileRouge.GameElements.Bonu
+namespace FileRouge.GameElements.Items
 {
     class SpeedUp : Bonus
     {
@@ -16,15 +16,16 @@ namespace FileRouge.GameElements.Bonu
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            base.LoadContent(content, "heal");
+            base.LoadContent(content, "bonus-speedup");
         }
 
-        public override void applyBonus()
+        public override void applyBonus(GameTime gameTime)
         {
             rtgame.mp.coefDep = rtgame.mp.coefDep * 1.3f;
+            rtgame.mp.listBonus.Add(new FileRouge.GameElements.MainPlayer.ApplyBonus(this, gameTime));
         }
 
-        public override void disbaleBonus()
+        public override void disableBonus()
         {
             rtgame.mp.coefDep = rtgame.mp.coefDep / 1.3f;
         }

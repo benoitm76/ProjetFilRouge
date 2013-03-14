@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using FileRouge.GameElements.Core;
 using FileRouge.Armement;
 using Microsoft.Xna.Framework.Media;
+using FileRouge.GameElements.Items;
 
 namespace FileRouge.Scenes
 {
@@ -90,6 +91,8 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "passon");
             LoaderTexture.loadTexture(_content, "noiseau");
             LoaderTexture.loadTexture(_content, "bubullepasrondetr");
+            LoaderTexture.loadTexture(_content, "bonus-boubou");
+            LoaderTexture.loadTexture(_content, "bonus-speedup");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
@@ -207,7 +210,7 @@ namespace FileRouge.Scenes
                     bonu.Update(gameTime, displacementX);
                     if (Collision.CheckCollision(r.mp.getRectangle(), r.mp.getColor(), bonu.getRectangle(), bonu.getColor()))
                     {
-                        bonu.applyBonus();
+                        bonu.applyBonus(gameTime);
                         destroy_bonus.Add(bonu);
                     }
 

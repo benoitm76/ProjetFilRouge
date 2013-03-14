@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 using FileRouge.Armement;
+using FileRouge.GameElements.Items;
 
 namespace FileRouge.GameElements
 {
@@ -25,7 +26,7 @@ namespace FileRouge.GameElements
         public int maxShield { get; set; }
         public int maxHealth { get; set; }
 
-        public List<ApplyBonus> listBonus;
+        public List<ApplyBonus> listBonus { get; set; }
 
         private RTGame rtgame;
 
@@ -40,6 +41,7 @@ namespace FileRouge.GameElements
             coefDep = 5f;
             size = new Vector2(256, 105);
             nbrSprite = 3;
+            this.listBonus = new List<ApplyBonus>();
         }
 
         public void HandleInput(GameTime gameTime)
@@ -177,6 +179,12 @@ namespace FileRouge.GameElements
         {
             public Bonus b { get; set; }
             public GameTime g { get; set; }
+
+            public ApplyBonus(Bonus b, GameTime g)
+            {
+                this.b = b;
+                this.g = g;
+            }
         }
     }
 }
