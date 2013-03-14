@@ -7,21 +7,22 @@ using FileRouge.Armement;
 
 namespace FileRouge.GameElements.Items
 {
-    class DoubleGunBonus : Bonus
+    class WeaponSpeedUpBonus : Bonus
     {
-        public DoubleGunBonus(Vector2 size_window, RTGame rtGame)
+        public WeaponSpeedUpBonus(Vector2 size_window, RTGame rtGame)
             : base(size_window, rtGame)
         {
         }
 
         public override void LoadContent(Microsoft.Xna.Framework.Content.ContentManager content)
         {
-            base.LoadContent(content, "weapon-double");
+            base.LoadContent(content, "bonus-weapon-speedup");
         }
 
         public override void applyBonus(GameTime gameTime)
         {
-            rtgame.mp.newArme(new DoubleGun(size_window, rtgame, true), 256, 85);
+            rtgame.mp.arme.LevelArme += 1;
+            rtgame.mp.arme.ArmeCarct();
         }
 
         public override void disableBonus()

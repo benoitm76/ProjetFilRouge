@@ -43,7 +43,7 @@ namespace FileRouge.Armement
             }
             else if (LevelArme != 1 && LevelArme != 2 && LevelArme != 3)
             {
-                CadTir = 500;
+                CadTir = 200;
                 DegArme = 1;
             }   
         }

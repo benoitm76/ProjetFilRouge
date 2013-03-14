@@ -24,7 +24,21 @@ namespace FileRouge.Armement
             {
                 CadTir = 10000;
                 DegArme = 1;
-
+            }
+            else if (LevelArme == 2)
+            {
+                CadTir = 5000;
+                DegArme = 1;
+            }
+            else if (LevelArme == 3)
+            {
+                CadTir = 3000;
+                DegArme = 1;
+            }
+            else
+            {
+                CadTir = 2000;
+                DegArme = 1;
             }
         }
 

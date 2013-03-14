@@ -559,7 +559,7 @@ namespace FileRouge.GameElements
                 if (random.Next(0, 80 + (int)(distance / 1000 * 0.05f * 80)) == 10)
                 {
                     Bonus newBonus;
-                    int rm = random.Next(0, 3);
+                    int rm = random.Next(0, 9);
                     switch (rm)
                     {
                         case 0:
@@ -567,12 +567,30 @@ namespace FileRouge.GameElements
                             newBonus = new DoubleGunBonus(size_window, this);
                             break;
                         case 1:
-                            newBonus = new DoubleGunBonus(size_window, this);
+                            newBonus = new LaserGunBonus(size_window, this);
                             //Weapon
                             break;
                         case 2:
                             newBonus = new SimpleGunBonus(size_window, this);
                             //Speedown
+                            break;
+                        case 3:
+                            newBonus = new LaserGunBonus(size_window, this);
+                            break;
+                        case 4:
+                            newBonus = new Bouclier(size_window, this);
+                            break;
+                        case 5:
+                            newBonus = new Heal(size_window, this);
+                            break;
+                        case 6:
+                            newBonus = new SpeedUp(size_window, this);
+                            break;
+                        case 7:
+                            newBonus = new BoomGunBonus(size_window, this);
+                            break;
+                        case 8:
+                            newBonus = new WeaponSpeedUpBonus(size_window, this);
                             break;
                         default:
                             newBonus = new Heal(size_window, this);

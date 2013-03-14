@@ -31,22 +31,22 @@ namespace FileRouge.Armement
             }
             else if (LevelArme == 2)
             {
-                CadTir = 400;
+                CadTir = 800;
                 beamDuration = 200;
                 DegArme = 2;
 
             }
             else if (LevelArme == 3)
             {
-                CadTir = 300;
+                CadTir = 600;
                 beamDuration = 200;
                 DegArme = 4;
 
             }
-            else if (LevelArme != 1 && LevelArme != 2 && LevelArme != 3)
+            else 
             {
                 CadTir = 500;
-                beamDuration = 200;
+                beamDuration = 300;
                 DegArme = 1;
             }   
 

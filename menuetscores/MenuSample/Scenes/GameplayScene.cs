@@ -133,6 +133,9 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "bonus-speedup");
             LoaderTexture.loadTexture(_content, "weapon-double");
             LoaderTexture.loadTexture(_content, "weapon-simple");
+            LoaderTexture.loadTexture(_content, "weapon-beam");
+            LoaderTexture.loadTexture(_content, "weapon-boom");
+            LoaderTexture.loadTexture(_content, "bonus-weapon-speedup");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
