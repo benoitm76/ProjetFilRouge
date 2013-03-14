@@ -9,6 +9,7 @@ namespace FileRouge.Inputs
 {
     public delegate void playerFired();
     public delegate void playerMoved();
+
     public class KinectInput
     {
         public KinectSensor sensor { get; set; }
@@ -16,6 +17,8 @@ namespace FileRouge.Inputs
         public event playerFired startFire;
         public event playerFired stopFire;
         public event playerMoved playerMove;
+
+        public bool isLeave { get; set; }
         public bool onContinueFire { get; set; }
         public bool onFire { get; set; }
 
@@ -80,7 +83,11 @@ namespace FileRouge.Inputs
 
                 if (currentSkeleton != null)
                 {
-                    if ((oldPointRightHand.Z - currentSkeleton.Joints[JointType.HandRight].Position.Z >= 0.3) && !onFire)
+                    if (isLeave == true)
+                    {
+                        isLeave = false;
+                    }
+                    if ((oldPointRightHand.Z - currentSkeleton.Joints[JointType.HandRight].Position.Z >= 0.15) && !onFire)
                     {
                         oldPointRightHand = currentSkeleton.Joints[JointType.HandRight].Position;
                         if (onContinueFire)
@@ -113,6 +120,10 @@ namespace FileRouge.Inputs
                         oldPointLeftHand = currentSkeleton.Joints[JointType.HandLeft].Position;
                         playerMove();
                     }
+                }
+                else
+                {
+                    isLeave = true;
                 }
             }
         }

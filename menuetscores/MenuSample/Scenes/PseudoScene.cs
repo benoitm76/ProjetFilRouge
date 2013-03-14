@@ -75,5 +75,9 @@ namespace FileRouge.Scenes
 
             base.Draw(gameTime);
         }
+
+        public new void handSelect()
+        {
+        }
     }
 }

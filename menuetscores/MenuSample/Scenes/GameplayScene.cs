@@ -23,8 +23,6 @@ namespace FileRouge.Scenes
     {
         #region Fields
 
-        public KinectInput ki;
-
         SpriteBatch spriteBatch;
 
         private Vector2 size_window;
@@ -182,7 +180,7 @@ namespace FileRouge.Scenes
                 ? Math.Min(_pauseAlpha + 1f / 32, 1) 
                 : Math.Max(_pauseAlpha - 1f / 32, 0);
 
-            if (IsActive)
+            if (IsActive && ! r.mp.ki.isLeave)
             {
                 if (r.mp.health <= 0)
                 {
@@ -404,9 +402,6 @@ namespace FileRouge.Scenes
                 arme.Draw(spriteBatch, gameTime);
             }
 
-            /*spriteBatch.Draw(_content.Load<Texture2D>("laser"), new Vector2(100, 100), null, new Color(15, 153, 254, 255),
-                       0, Vector2.Zero, new Vector2(1000, 1),
-                       SpriteEffects.None, 0);*/
             r.mp.Draw(spriteBatch, gameTime);
             spriteBatch.End();
 
