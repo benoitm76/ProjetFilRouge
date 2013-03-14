@@ -204,7 +204,7 @@ namespace FileRouge.Scenes
                     scrollX = 0;
                 }
 
-                iBackgroundOffset += 5;
+                BackgroundOffset += 5;
 
                 int displacementX = (int)(5 * r.vitesse);
                 r.mp.HandleInput(gameTime);
