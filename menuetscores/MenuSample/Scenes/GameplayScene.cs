@@ -134,6 +134,7 @@ namespace FileRouge.Scenes
             LoaderTexture.loadTexture(_content, "weapon-beam");
             LoaderTexture.loadTexture(_content, "weapon-boom");
             LoaderTexture.loadTexture(_content, "bonus-weapon-speedup");
+            LoaderTexture.loadTexture(_content, "missile");
 
             mainTheme = _content.Load<Song>("Sounds/sp");
 
@@ -191,15 +192,16 @@ namespace FileRouge.Scenes
                     //enrScores.AjouterScore("FriZBy", Math.Round(r.distance).ToString());
                     //new ScoresMenuScene(_sceneManager).Add();
                     pseudoScene.Add();
+                    LoaderTexture.UnloadAll();
                 }
-                /*if (MediaPlayer.State == MediaState.Stopped)
+                if (MediaPlayer.State == MediaState.Stopped)
                 {
                     MediaPlayer.Play(mainTheme);
                 }
                 else if (MediaPlayer.State == MediaState.Paused)
                 {
                     MediaPlayer.Resume();
-                }*/
+                }
 
                 scrollX = (int)(scrollX + 5);
                 if (scrollX >= _background.Width - size_window.X)

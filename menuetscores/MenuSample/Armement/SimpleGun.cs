@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using FileRouge.GameElements;
 using FileRouge.GameElements.Core;
 using FileRouge.GameElements.Ennemy;
+using Microsoft.Xna.Framework.Audio;
 
 namespace FileRouge.Armement
 {
@@ -18,10 +19,14 @@ namespace FileRouge.Armement
         public TimeSpan lastShotRaf { get; set; }
         public int shotRestRaf { get; set; }
 
+        protected SoundEffect fireSound;      
+
         public SimpleGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer) : base(size_window, rtgame, ennemyermainplayer)
         {
             NomArme = "Simple Gun";
             color = Color.Red;
+            fireSound = rtgame.content.Load<SoundEffect>("Sounds/laser");
+            
         }
 
         public override void ArmeCarct()
@@ -85,6 +90,7 @@ namespace FileRouge.Armement
                     missiles.Add(missile);
                     lastShotRaf = gameTime.TotalGameTime;
                     shotRestRaf--;
+                    fireSound.Play();
                 }
             }
 

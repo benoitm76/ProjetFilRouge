@@ -19,7 +19,7 @@ namespace FileRouge.Armement
 
         public void LoadContent(ContentManager content)
         {
-            base.LoadContent(content, "mine");
+            base.LoadContent(content, "missile");
         }
 
         public override void Update(GameTime gameTime, int displacementX)

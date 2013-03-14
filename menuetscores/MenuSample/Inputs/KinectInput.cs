@@ -47,6 +47,7 @@ namespace FileRouge.Inputs
                     throw new Exception();
                 }
                 onContinueFire = false;
+                isLeave = true;
                 sensor.SkeletonFrameReady += onSkeletonFrameReady;
             }
             catch (Exception)

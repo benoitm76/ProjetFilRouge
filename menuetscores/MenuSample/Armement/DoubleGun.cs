@@ -9,6 +9,7 @@ using FileRouge.Scenes.Core;
 using Microsoft.Xna.Framework.Content;
 using FileRouge.GameElements;
 using FileRouge.GameElements.Core;
+using Microsoft.Xna.Framework.Audio;
 
 namespace FileRouge.Armement
 {
@@ -19,6 +20,7 @@ namespace FileRouge.Armement
         {
             NomArme = "Double Gun";
             color = new Color(15, 153, 254, 255);
+            fireSound = rtgame.content.Load<SoundEffect>("Sounds/laser");
         }
 
         public override void ArmeCarct()
@@ -89,6 +91,7 @@ namespace FileRouge.Armement
                     missiles.Add(missile2);
                     lastShotRaf = gameTime.TotalGameTime;
                     shotRestRaf--;
+                    fireSound.Play();
                 }
             }
 

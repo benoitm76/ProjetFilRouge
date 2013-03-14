@@ -45,5 +45,11 @@ namespace FileRouge.GameElements.Core
         {
             return listColors[assetName];
         }
+
+        public static void UnloadAll()
+        {
+            listColors = null;
+            listTextures = null;
+        }
     }
 }
