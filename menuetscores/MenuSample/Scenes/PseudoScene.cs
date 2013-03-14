@@ -86,8 +86,8 @@ namespace FileRouge.Scenes
 
         protected override void OnCancel()
         {
-            Remove();
-            LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
+            //Remove();
+            //LoadingScene.Load(SceneManager, false, new ScoresMenuScene(SceneManager));
         }
     }
 }

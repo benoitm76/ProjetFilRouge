@@ -7,6 +7,7 @@ using FileRouge.GameElements;
 using Microsoft.Xna.Framework.Graphics;
 using System.Threading.Tasks;
 using FileRouge.GameElements.Core;
+using Microsoft.Xna.Framework.Audio;
 
 namespace FileRouge.Armement
 {
@@ -14,10 +15,13 @@ namespace FileRouge.Armement
     {
         public int beamDuration { get; set; }
 
+        protected SoundEffect fireSound;   
+
         public SimpleLaser(Vector2 size_window, RTGame rtgame, Boolean ennemyormainplayer)
             : base(size_window, rtgame, ennemyormainplayer)
         {
             NomArme = "Simple Laser";
+            fireSound = rtgame.content.Load<SoundEffect>("Sounds/beam");
         }
 
         public override void ArmeCarct()
@@ -61,6 +65,7 @@ namespace FileRouge.Armement
                 missile.LoadContent(rtgame.content);
                 missiles.Add(missile);
                 lastShot = gameTime.TotalGameTime;
+                fireSound.Play();
             }
         }
 
