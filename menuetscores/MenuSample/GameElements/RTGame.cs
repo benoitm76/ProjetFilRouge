@@ -66,20 +66,20 @@ namespace FileRouge.GameElements
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 700, size_window.Y * 0.3f));
             level.Add(new DropEnnemies(new ShiftEnnemies(size_window, this), 750, size_window.Y * 0.3f));
 
-            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1000, size_window.X / 2));
-            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1100, size_window.X / 2));
-            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.X / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1000, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1100, size_window.Y / 2));
+            level.Add(new DropEnnemies(new FollowingEnnemies(size_window, this), 1200, size_window.Y / 2));
 
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1500, 200));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1600, 400));
             level.Add(new DropEnnemies(new MovingEnnemies(size_window, this), 1700, 600));
 
             level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 200));
-            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
-            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 600));
-            level.Add(new DropEnnemies(new Mine(size_window, this), 2000, 600));
-            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 400));
-            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 200));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2100, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2200, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2300, 600));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2400, 400));
+            level.Add(new DropEnnemies(new Mine(size_window, this), 2500, 200));
         }
 
         public void generateEnnemies()
