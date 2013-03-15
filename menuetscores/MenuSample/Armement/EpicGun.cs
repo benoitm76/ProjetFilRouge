@@ -18,9 +18,9 @@ namespace FileRouge.Armement
 
         public EpicGun(Vector2 size_window, RTGame rtgame, Boolean ennemyermainplayer) : base(size_window, rtgame, ennemyermainplayer)
         {
-            NomArme = "Simple Gun";
+            NomArme = "Epic Gun";
             color = Color.White;
-            explosionSound = rtgame.content.Load<SoundEffect>("Sounds/siffleBomb");
+            explosionSound = rtgame.content.Load<SoundEffect>("Sounds/bomb");
         }
 
         public override void ArmeCarct()

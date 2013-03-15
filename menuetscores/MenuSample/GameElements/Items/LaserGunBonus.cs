@@ -21,7 +21,7 @@ namespace FileRouge.GameElements.Items
 
         public override void applyBonus(GameTime gameTime)
         {
-            rtgame.mp.newArme(new SimpleLaser(size_window, rtgame, true), 256, 75);
+            rtgame.mp.newArme(new SimpleLaser(size_window, rtgame, true), 256, 73);
         }
 
         public override void disableBonus()
